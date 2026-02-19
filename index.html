@@ -901,15 +901,6 @@ body {
 }
 </style>
 
-
-<style>
-#home {
-    will-change: transform, opacity;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-}
-</style>
-
 </head>
 
 <body>
@@ -2220,46 +2211,6 @@ body {
 
         typeLoop();
     </script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const heroSection = document.querySelector('#home');
-    const sections = document.querySelectorAll('.section');
-
-    // Cinematic Hero Auto Animation
-    if (heroSection) {
-        heroSection.style.opacity = "0";
-        heroSection.style.transform = "translateY(40px)";
-        
-        setTimeout(() => {
-            heroSection.style.transition = "all 1.2s cubic-bezier(0.22, 1, 0.36, 1)";
-            heroSection.style.opacity = "1";
-            heroSection.style.transform = "translateY(0)";
-            heroSection.classList.add("visible");
-        }, 400);
-    }
-
-    // Scroll-based animations for other sections
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.15
-    });
-
-    sections.forEach(section => {
-        if (section.id !== "home") {
-            observer.observe(section);
-        }
-    });
-
-});
-</script>
-
 </body>
 
 </html>
