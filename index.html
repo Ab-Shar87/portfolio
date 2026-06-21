@@ -1,2212 +1,350 @@
 <!DOCTYPE html>
-
-<html dir="rtl" lang="fa">
-
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Abolfazl Sharifi | Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;700;900&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پاسخ‌نامه آزمایشگاه علوم تجربی - پایه یازدهم</title>
     <style>
+        :root {
+            --bg-gradient: radial-gradient(circle at top left, #0f172a, #020617);
+            --card-bg: rgba(30, 41, 59, 0.45);
+            --card-border: rgba(0, 180, 216, 0.2);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-teal: #00b4d8;
+            --accent-silver: #cbd5e1;
+            --badge-bg: linear-gradient(135deg, #00b4d8, #0077b6);
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgba(139, 92, 246, 0.5);
-            border-radius: 10px;
         }
 
         body {
-            background: #0a0a1a;
-            color: #fff;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        .bg-animated {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.6;
-            animation: blobMove 20s infinite alternate;
-        }
-
-        .blob-1 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, #8b5cf6, #6d28d9);
-            top: -10%;
-            right: -10%;
-            animation-delay: 0s;
-        }
-
-        .blob-2 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, #06b6d4, #0891b2);
-            bottom: -10%;
-            left: -10%;
-            animation-delay: -5s;
-        }
-
-        .blob-3 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, #ec4899, #db2777);
-            top: 40%;
-            left: 30%;
-            animation-delay: -10s;
-        }
-
-        .blob-4 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, #f59e0b, #d97706);
-            bottom: 20%;
-            right: 20%;
-            animation-delay: -15s;
-        }
-
-        @keyframes blobMove {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            25% {
-                transform: translate(100px, -50px) scale(1.1);
-            }
-
-            50% {
-                transform: translate(-50px, 100px) scale(0.9);
-            }
-
-            75% {
-                transform: translate(80px, 60px) scale(1.05);
-            }
-
-            100% {
-                transform: translate(-30px, -80px) scale(1);
-            }
-        }
-
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-        }
-
-        .glass-strong {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(139, 92, 246, 0.15);
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            width: 75vw;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            padding: 12px 30px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            padding: 8px 18px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            font-size: 14px;
-            font-weight: 500;
-            position: relative;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: #fff;
-            background: rgba(139, 92, 246, 0.3);
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 3px;
-            background: #8b5cf6;
-            border-radius: 2px;
-        }
-
-        /* Hero Section */
-        .hero-section {
+            font-family: 'Peyda', 'IRANSans', 'Vazirmatn', Tahoma, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 120px 20px 60px;
+            line-height: 1.8;
+            padding: 40px 20px;
         }
 
-        .heroDiv {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 60px;
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .profile-ring {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            padding: 4px;
-            background: conic-gradient(from 0deg, #8b5cf6, #06b6d4, #ec4899, #f59e0b, #8b5cf6);
-            animation: ringRotate 4s linear infinite;
+        header {
+            text-align: center;
+            margin-bottom: 50px;
             position: relative;
         }
 
-        @keyframes ringRotate {
-            100% {
-                filter: hue-rotate(360deg);
-            }
+        header h1 {
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 20px rgba(0, 180, 216, 0.3);
         }
 
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 64px;
-            font-weight: 900;
-            color: #8b5cf6;
-            border: 4px solid #0a0a1a;
+        header p {
+            color: var(--accent-teal);
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
-        .typing-text {
-            overflow: hidden;
-            white-space: nowrap;
-            border-left: 3px solid #8b5cf6;
-            animation: typing 3.5s steps(30) 1s forwards, blink 0.75s step-end infinite;
-            width: 0;
-            display: inline-block;
-        }
-
-        @keyframes typing {
-            to {
-                width: 100%;
-            }
-        }
-
-        @keyframes blink {
-            50% {
-                border-color: transparent;
-            }
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #8b5cf6, #06b6d4, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .gradient-text-2 {
-            background: linear-gradient(135deg, #f59e0b, #ec4899, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Social Icons */
-        .social-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            color: rgba(255, 255, 255, 0.7);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .social-icon:hover {
-            transform: translateY(-5px) rotate(5deg);
-            color: #fff;
-        }
-
-        .social-icon.github:hover {
-            background: rgba(139, 92, 246, 0.3);
-            border-color: #8b5cf6;
-        }
-
-        .social-icon.linkedin:hover {
-            background: rgba(6, 182, 212, 0.3);
-            border-color: #06b6d4;
-        }
-
-        .social-icon.telegram:hover {
-            background: rgba(59, 130, 246, 0.3);
-            border-color: #3b82f6;
-        }
-
-        .social-icon.email:hover {
-            background: rgba(236, 72, 153, 0.3);
-            border-color: #ec4899;
-        }
-
-        .social-icon.twitter:hover {
-            background: rgba(245, 158, 11, 0.3);
-            border-color: #f59e0b;
-        }
-
-        /* Floating Elements */
-        .float-element {
-            position: absolute;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-        }
-
-        /* Skills */
-        .skill-bar-bg {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .skill-bar-fill {
-            height: 100%;
-            border-radius: 10px;
-            background: linear-gradient(90deg, #8b5cf6, #06b6d4);
-            width: 0;
-            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .skill-bar-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-        /* Project Cards */
-        .project-card {
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-card .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 0;
-            background: linear-gradient(to top, rgba(139, 92, 246, 0.9), transparent);
-            transition: height 0.4s ease;
-            display: flex;
-            align-items: flex-end;
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
             padding: 30px;
-            border-radius: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        .project-card:hover .overlay {
-            height: 100%;
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 180, 216, 0.4);
         }
 
-        .project-thumb {
-            width: 100%;
-            height: 220px;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
-            border-radius: 16px;
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--accent-teal);
+            font-weight: 700;
+        }
+
+        .badge {
+            background: var(--badge-bg);
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 180, 216, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            color: var(--accent-silver);
+            margin: 20px 0 10px 0;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            margin-bottom: 16px;
         }
 
-        /* Timeline */
-        .timeline-item {
-            position: relative;
-            padding-right: 40px;
-            margin-bottom: 40px;
-        }
-
-        .timeline-item::before {
+        .section-title::before {
             content: '';
-            position: absolute;
-            right: 0;
-            top: 8px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #8b5cf6;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            right: 7px;
-            top: 28px;
-            width: 2px;
-            height: calc(100% + 12px);
-            background: rgba(139, 92, 246, 0.3);
-        }
-
-        .timeline-item:last-child::after {
-            display: none;
-        }
-
-        /* Contact Form */
-        .form-input {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 16px 20px;
-            color: #fff;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            width: 100%;
-            outline: none;
-        }
-
-        .form-input:focus {
-            border-color: #8b5cf6;
-            background: rgba(139, 92, 246, 0.1);
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.1);
-        }
-
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
-            color: #fff;
-            padding: 14px 40px;
-            border-radius: 16px;
-            border: none;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: #fff;
-            padding: 14px 40px;
-            border-radius: 16px;
-            border: 2px solid rgba(139, 92, 246, 0.5);
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-outline:hover {
-            background: rgba(139, 92, 246, 0.2);
-            border-color: #8b5cf6;
-            transform: translateY(-3px);
-        }
-
-        /* Stats */
-        .stat-number {
-            font-size: 48px;
-            font-weight: 900;
-            line-height: 1;
-        }
-
-        /* Section Title */
-        .section-title {
-            position: relative;
             display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+            width: 6px;
+            height: 16px;
+            background: var(--accent-teal);
+            margin-left: 10px;
             border-radius: 2px;
         }
 
-        /* Particles */
-        .particle {
-            position: fixed;
-            pointer-events: none;
-            border-radius: 50%;
-            background: rgba(139, 92, 246, 0.3);
-            animation: particleFade 1s ease-out forwards;
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            text-align: justify;
         }
 
-        @keyframes particleFade {
-            0% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            100% {
-                opacity: 0;
-                transform: scale(0);
-            }
+        strong {
+            color: var(--text-primary);
         }
 
-        /* Reveal Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        ul {
+            list-style: none;
+            margin-bottom: 15px;
+            padding-right: 15px;
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* .heroDiv .reveal{
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-        } */
-
-        .heroDiv .reveal div{
-            display: flex;
-            justify-content: center;
+        li {
+            color: var(--text-secondary);
+            position: relative;
+            padding-right: 20px;
+            margin-bottom: 10px;
         }
 
-        .reveal-delay-1 {
-            transition-delay: 0.1s;
+        li::before {
+            content: '✦';
+            position: absolute;
+            right: 0;
+            color: var(--accent-teal);
+            font-size: 0.8rem;
         }
 
-        .reveal-delay-2 {
-            transition-delay: 0.2s;
-        }
-
-        .reveal-delay-3 {
-            transition-delay: 0.3s;
-        }
-
-        .reveal-delay-4 {
-            transition-delay: 0.4s;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            width: 40px;
-            height: 40px;
+        /* HTML/CSS Math Expressions */
+        .math-container {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
-            font-size: 18px;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tag {
-            display: inline-block;
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            background: rgba(139, 92, 246, 0.2);
-            color: #c4b5fd;
-            border: 1px solid rgba(139, 92, 246, 0.3);
-        }
-
-        .tag-cyan {
-            background: rgba(6, 182, 212, 0.2);
-            color: #67e8f9;
-            border-color: rgba(6, 182, 212, 0.3);
-        }
-
-        .tag-pink {
-            background: rgba(236, 72, 153, 0.2);
-            color: #f9a8d4;
-            border-color: rgba(236, 72, 153, 0.3);
-        }
-
-        .tag-amber {
-            background: rgba(245, 158, 11, 0.2);
-            color: #fcd34d;
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-
-        /* Marquee */
-        .marquee-container {
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 30s linear infinite;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        .marquee-item {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 30px;
-            margin: 0 8px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 15px;
-            color: rgba(255, 255, 255, 0.7);
+            justify-content: center;
+            margin: 15px 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-family: 'Times New Roman', serif;
+            direction: ltr;
         }
 
-        /* Music Visualizer */
-        .music-bars {
-            display: flex;
-            gap: 3px;
-            align-items: flex-end;
-            height: 20px;
+        .math-var {
+            font-style: italic;
+            font-weight: bold;
+            color: var(--accent-teal);
+            font-size: 1.2rem;
+            margin-right: 8px;
         }
 
-        .music-bar {
-            width: 3px;
-            background: #8b5cf6;
-            border-radius: 2px;
-            animation: musicBar 0.8s ease-in-out infinite alternate;
+        .math-equal {
+            color: var(--text-primary);
+            margin-right: 8px;
+            font-size: 1.1rem;
         }
 
-        .music-bar:nth-child(1) {
-            animation-delay: 0s;
-            height: 8px;
+        .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            font-family: 'Peyda', 'IRANSans', Tahoma, sans-serif;
+            font-size: 0.95rem;
         }
 
-        .music-bar:nth-child(2) {
-            animation-delay: 0.1s;
-            height: 15px;
+        .numerator {
+            border-bottom: 2px solid var(--accent-silver);
+            padding-bottom: 4px;
+            color: var(--text-primary);
         }
 
-        .music-bar:nth-child(3) {
-            animation-delay: 0.2s;
-            height: 10px;
+        .denominator {
+            padding-top: 4px;
+            color: var(--text-primary);
         }
 
-        .music-bar:nth-child(4) {
-            animation-delay: 0.3s;
-            height: 18px;
+        .highlight-box {
+            background: rgba(0, 180, 216, 0.05);
+            border-right: 4px solid var(--accent-teal);
+            padding: 15px;
+            border-radius: 4px 12px 12px 4px;
+            margin-top: 15px;
         }
 
-        .music-bar:nth-child(5) {
-            animation-delay: 0.15s;
-            height: 12px;
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--text-primary);
         }
 
-        @keyframes musicBar {
-            0% {
-                transform: scaleY(0.3);
-            }
-
-            100% {
-                transform: scaleY(1);
-            }
-        }
-
-        /* Orbit Animation */
-        .orbit-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-        }
-
-        .orbit-ring {
-            position: absolute;
-            border: 1px solid rgba(139, 92, 246, 0.15);
-            border-radius: 50%;
-            animation: orbitSpin 20s linear infinite;
-        }
-
-        .orbit-ring-1 {
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-
-        .orbit-ring-2 {
-            width: 75%;
-            height: 75%;
-            top: 12.5%;
-            left: 12.5%;
-            animation-direction: reverse;
-            animation-duration: 15s;
-        }
-
-        .orbit-ring-3 {
-            width: 50%;
-            height: 50%;
-            top: 25%;
-            left: 25%;
-            animation-duration: 10s;
-        }
-
-        .orbit-dot {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            top: -5px;
-            left: 50%;
-            margin-left: -5px;
-        }
-
-        @keyframes orbitSpin {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: flex;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                padding: 20px;
-                border-radius: 20px;
-                background: rgba(10, 10, 26, 0.95);
-                backdrop-filter: blur(30px);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            .nav-links.show {
-                display: flex;
-            }
-
-            .stat-number {
-                font-size: 32px;
-            }
-
-            .heroDiv {
-                flex-direction: column-reverse;
-                margin-top: 30vh;
-            }
-
-            .hero-title {
-                font-size: 2rem !important;
-            }
-
-            .blob {
-                width: 250px !important;
-                height: 250px !important;
-            }
-        }
-
-        /* Glow effect */
-        .glow-purple {
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
-        }
-
-        .glow-cyan {
-            box-shadow: 0 0 40px rgba(6, 182, 212, 0.15);
-        }
-
-        /* Cursor follower */
-        .cursor-follower {
-            position: fixed;
-            width: 30px;
-            height: 30px;
-            border: 2px solid rgba(139, 92, 246, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.15s ease, width 0.3s, height 0.3s, border-color 0.3s;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor-dot {
-            position: fixed;
-            width: 6px;
-            height: 6px;
-            background: #8b5cf6;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-        }
-
-        @media (max-width: 768px) {
-
-            .cursor-follower,
-            .cursor-dot {
-                display: none;
-            }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
         }
     </style>
-
-<style>
-/* ===== GLOBAL SHAKE FIX ===== */
-html, body {
-    max-width: 100%;
-    overflow-x: hidden !important;
-}
-
-body {
-    position: relative;
-}
-
-/* Prevent animated elements from causing layout shift */
-.orbit-container,
-.float-element,
-.blob {
-    overflow: visible !important;
-    max-width: 100vw !important;
-    pointer-events: none;
-}
-
-/* Safe float animation override */
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
-}
-
-/* Safe rotate animation */
-@keyframes rotateSafe {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-</style>
-
 </head>
-
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor-follower" id="cursorFollower"></div>
-    <div class="cursor-dot" id="cursorDot"></div>
-    <!-- Animated Background -->
-    <div class="bg-animated">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-        <div class="blob blob-4"></div>
+
+<div class="container">
+    <header>
+        <h1>پاسخ‌نامه جامع آزمایشگاه علوم تجربی</h1>
+        <p>پایه یازدهم دوره دوم متوسطه</p>
+    </header>
+
+    <!-- سوال ۱ -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">سوال ۱</div>
+            <div class="badge">۴ نمره</div>
+        </div>
+        
+        <div class="section-title">الف) امواج لرزه‌ای و تشخیص مرکز زمین‌لرزه</div>
+        <p>وقتی بخشی از سنگ‌کره می‌شکند، انرژی به صورت امواج لرزه‌ای آزاد می‌شود که به دو دستهٔ کلی تقسیم می‌شوند:</p>
+        <ul>
+            <li><strong>امواج درونی:</strong> شامل <strong>موج P</strong> (اولیه، فشاری، سریع‌تر، با قابلیت عبور از محیط‌های جامد، مایع و گاز) و <strong>موج S</strong> (ثانویه، عرضی، کندتر، با قابلیت عبور صرفاً از محیط‌های جامد).</li>
+            <li><strong>امواج سطحی:</strong> سرعت حرکت آن‌ها از هر دو نوع بالا کمتر است، بر روی سطح زمین حرکت می‌کنند و بیشترین خسارت و خرابی را به‌وجود می‌آورند.</li>
+        </ul>
+        <p><strong>مکانیزم تشخیص مرکز زمین‌لرزه:</strong> از آنجا که موج P زودتر از موج S به ایستگاه لرزه‌نگاری می‌رسد، با اندازه‌گیری دقیق اختلاف زمان رسیدن این دو موج، فاصلهٔ دقیق ایستگاه تا کانون زمین‌لرزه محاسبه می‌شود.</p>
+
+        <div class="section-title">ب) ضرورت وجود سه ایستگاه لرزه‌نگاری</div>
+        <p>با داشتن داده‌های <strong>یک ایستگاه</strong>، تنها می‌دانیم کانون روی محیط یک دایره (به شعاع همان فاصلهٔ محاسبه‌شده) قرار دارد که شامل بی‌نهایت نقطهٔ ممکن است. با اضافه شدن <strong>ایستگاه دوم</strong>، دو دایره رسم می‌شود که در دو نقطه با یکدیگر تلاقی دارند و هنوز دو احتمال وجود دارد. در نهایت، تنها با حضور <strong>ایستگاه سوم</strong> و رسم دایرهٔ سوم است که هر سه دایره دقیقاً در یک نقطهٔ مشترک متقاطع می‌شوند؛ این نقطه همان مرکز سطحی زمین‌لرزه است.</p>
+        <p><strong>مبنای رسم دایره‌ها:</strong> فاصلهٔ هر ایستگاه از کانون (که از اختلاف زمان رسیدن امواج P و S به دست آمده) به‌عنوان شعاع دایره با مرکزیت موقعیت جغرافیایی همان ایستگاه در نظر گرفته می‌شود.</p>
     </div>
-    <!-- Navigation -->
-    <nav class="navbar glass" id="navbar">
-        <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%;">
-            <a href="#home" style="text-decoration: none;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <div
-                        style="width: 36px; height: 36px; background: linear-gradient(135deg, #8b5cf6, #06b6d4); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px;">
-                        A</div>
-                    <span style="font-weight: 700; font-size: 16px; color: #fff;">Abolfazl</span>
-                </div>
-            </a>
-            <div class="nav-links" id="navLinks" style="align-items: center; gap: 4px;">
-                <a class="nav-link active" href="#home" onclick="setActive(this)">خانه</a>
-                <a class="nav-link" href="#about" onclick="setActive(this)">درباره من</a>
-                <a class="nav-link" href="#skills" onclick="setActive(this)">مهارت‌ها</a>
-                <a class="nav-link" href="#projects" onclick="setActive(this)">پروژه‌ها</a>
-                <a class="nav-link" href="#contact" onclick="setActive(this)">تماس</a>
-            </div>
-            <button class="mobile-menu-btn" onclick="toggleMenu()">
-                <i class="fas fa-bars" id="menuIcon"></i>
-            </button>
+
+    <!-- سوال ۲ -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">سوال ۲</div>
+            <div class="badge">۴ نمره</div>
         </div>
-    </nav>
-    <!-- Hero Section -->
-    <section class="hero-section" id="home">
-        <div style="max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 20px;">
-            <div class="heroDiv">
-                <!-- Text Content -->
-                <div class="reveal" style="flex: 1; min-width: 300px;">
-                    <div
-                        style="display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px; border-radius: 100px; background: rgba(139, 92, 246, 0.15); border: 1px solid rgba(139, 92, 246, 0.3); margin-bottom: 24px;">
-                        <div class="music-bars">
-                            <div class="music-bar"></div>
-                            <div class="music-bar"></div>
-                            <div class="music-bar"></div>
-                            <div class="music-bar"></div>
-                            <div class="music-bar"></div>
-                        </div>
-                        <span style="margin:auto; font-size: 13px; color: #c4b5fd;">تنها صداست که می‌ماند</span>
-                    </div>
-                    <h1 class="hero-title"
-                        style="font-size: 3.5rem; font-weight: 900; line-height: 1.3; margin-bottom: 16px;">
-                        <span class="gradient-text">ابوالفضل شریفی هستم
-                    </h1>
-                    <div
-                        style="font-size: 1.2rem; color: rgba(255,255,255,0.6); margin-bottom: 32px; line-height: 1.8; flex-direction: column;">
-                        <span class="gradient-text-2" id="loopText" style="height:1.9rem; font-weight: 700; font-size: 1.3rem;"></span>
-                    </div>
-                    <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px;">
-                        <a href="#contact">
-                            <button class="btn-primary">
-                                <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
-                                ارتباط با من
-                            </button>
-                        </a>
-                        <a href="#projects">
-                            <button class="btn-outline">
-                                <i class="fas fa-eye" style="margin-left: 8px;"></i>
-                                مشاهده نمونه‌کارها
-                            </button>
-                        </a>
-                    </div>
-                    <!-- Social Icons -->
-                    <div style="display: flex; gap: 12px;">
-                        <a class="social-icon github" href="#"><i class="fab fa-github"></i></a>
-                        <a class="social-icon linkedin" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon telegram" href="#"><i class="fab fa-telegram-plane"></i></a>
-                        <a class="social-icon twitter" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="social-icon email" href="#"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-                <!-- Profile Image & Orbit -->
-                <div class="reveal reveal-delay-2" style="flex: 0 0 auto; position: relative;">
-                    <div class="orbit-container" style="margin: 0 auto;">
-                        <div class="orbit-ring orbit-ring-1">
-                            <div class="orbit-dot" style="background: #8b5cf6; box-shadow: 0 0 15px #8b5cf6;"></div>
-                        </div>
-                        <div class="orbit-ring orbit-ring-2">
-                            <div class="orbit-dot" style="background: #06b6d4; box-shadow: 0 0 15px #06b6d4;"></div>
-                        </div>
-                        <div class="orbit-ring orbit-ring-3">
-                            <div class="orbit-dot" style="background: #ec4899; box-shadow: 0 0 15px #ec4899;"></div>
-                        </div>
-                        <!-- Center Profile -->
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                            <div class="profile-ring">
-                                <div class="profile-img">
-                                    <img alt="Profile Image"
-                                        src="https://cdn.imgurl.ir/uploads/b38461_photo_2026-01-04_23-02-45.jpg"
-                                        style="width: 100%; height: 100%; border-radius: 50%;" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Floating Tags -->
-                    <div class="float-element" style="top: 10px; left: -30px; animation-delay: -1s;">
-                        <div class="glass" style="padding: 10px 18px; border-radius: 14px; font-size: 13px;">
-                            <i class="fas fa-microphone" style="color: #8b5cf6; margin-left: 6px;"></i> گوینده
-                        </div>
-                    </div>
-                    <div class="float-element" style="bottom: 30px; right: -20px; animation-delay: -3s;">
-                        <div class="glass" style="padding: 10px 18px; border-radius: 14px; font-size: 13px;">
-                            <i class="fas fa-palette" style="color: #ec4899; margin-left: 6px;"></i> گرافیست
-                        </div>
-                    </div>
-                    <div class="float-element" style="top: 40px; right: -40px; animation-delay: -2s;">
-                        <div class="glass" style="padding: 10px 18px; border-radius: 14px; font-size: 13px;">
-                            <i class="fas fa-theater-masks" style="color: #06b6d4; margin-left: 6px;"></i> مجری
-                        </div>
-                    </div>
+
+        <div class="section-title">الف) پدیده کاهش نقطه انجماد با افزودن نمک</div>
+        <p>نمک به عنوان یک ماده حل‌شدنی، نقطهٔ انجماد آب را پایین می‌آورد (پدیدهٔ کاهش نقطهٔ انجماد). در نتیجه، محلول آب‌نمک در دمایی پایین‌تر از صفر درجهٔ سانتی‌گراد نیز به حالت مایع باقی می‌ماند، پس یخی که قبلاً در دمای صفر درجه جامد بود، در مجاورت نمک ذوب می‌شود.</p>
+
+        <div class="section-title">ب) رفتار شگفت‌انگیز آب در ۴ درجه سانتی‌گراد</div>
+        <p>آب برخلاف اکثر مواد در طبیعت، بیشترین چگالی خود را در دمای ۴ درجهٔ سانتی‌گراد تجربه می‌کند، نه در نقطهٔ انجماد. وقتی هوای محیط سرد می‌شود، آب سطحی دریاچه سرد و سنگین‌تر شده و به کف دریاچه ته‌نشین می‌شود. اما با کاهش دما به زیر ۴ درجه، آب سردتر سبک‌تر شده و در سطح باقی می‌ماند. این پدیده سبب می‌شود که فقط سطح دریاچه یخ ببندد و آب عمق دریاچه در حدود ۴ درجه و به صورت مایع باقی بماند تا بستر مناسبی برای حفظ حیات ماهی‌ها و آبزیان فراهم شود. ضمناً یخ سطحی نیز به عنوان یک عایق حرارتی عمل کرده و مانع هدررفت بیشتر گرمای آب می‌شود.</p>
+
+        <div class="section-title">ج) بیماری رفع فشار در غواصی عمق زیاد</div>
+        <p>در عمق زیاد دریا، فشار بالای محیط باعث می‌شود گازهای تنفسی (به‌ویژه نیتروژن) به میزان بیشتری در خون و بافت‌های بدن غواص حل شوند. اگر غواص با سرعت بالایی به سطح آب بیاید، فشار محیط به ناگهان کاهش یافته و این گازهای محلول، به‌جای خروج تدریجی و منظم از طریق ریه و تنفس، به شکل حباب‌های گاز در خون و بافت‌ها ظاهر می‌شوند. این پدیده عامل بروز <strong>«بیماری رفع فشار» (Decompression Sickness)</strong> است که بسیار خطرناک و گاه مرگبار است.</p>
+        <p><strong>اقدام ایمنی:</strong> فرآیند بالا آمدن غواص باید کاملاً آهسته، تحت کنترل و به صورت مرحله‌به‌مرحله انجام شود تا گازهای درون خون فرصت کافی برای خروج تدریجی و بی‌خطر از طریق شش‌ها را داشته باشند.</p>
+    </div>
+
+    <!-- سوال ۳ -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">سوال ۳</div>
+            <div class="badge">۴ نمره</div>
+        </div>
+
+        <div class="section-title">الف) اندازه‌گیری دقیق قطر نخ</div>
+        <p>نخ را به تعداد زیاد و مشخص (مثلاً ۵۰ یا ۱۰۰ دور) به صورت کاملاً فشرده، یکنواخت و بدون ایجاد فاصله در کنار هم، دور یک مداد یا میله می‌پیچیم. سپس طول کل پیچش‌ها را به وسیلهٔ یک خط‌کش دقیق اندازه گرفته و از رابطهٔ زیر استفاده می‌کنیم:</p>
+        
+        <div style="text-align: center;">
+            <div class="math-container">
+                <span class="math-var">d</span>
+                <span class="math-equal">=</span>
+                <div class="fraction">
+                    <span class="numerator">طول کل پیچش‌ها</span>
+                    <span class="denominator">تعداد دورهای پیچش</span>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Tech Marquee -->
-    <section style="padding: 20px 0; overflow: hidden;">
-        <div class="marquee-container">
-            <div class="marquee-content">
-                <span class="marquee-item"><i class="fas fa-microphone-alt" style="color: #61dafb;"></i> گویندگی</span>
-                <span class="marquee-item"><i class="fas fa-tv" style="color: #42b883;"></i> مجری‌گری</span>
-                <span class="marquee-item"><i class="fas fa-pen-nib" style="color: #68a063;"></i> طراحی گرافیک</span>
-                <span class="marquee-item"><i class="fas fa-podcast" style="color: #ffd43b;"></i> پادکست</span>
-                <span class="marquee-item"><i class="fas fa-bullhorn" style="color: #f7df1e;"></i> برندینگ</span>
-                <span class="marquee-item"><i class="fas fa-shopping-cart" style="color: #38bdf8;"></i> تیزر
-                    تبلیغاتی</span>
-                <span class="marquee-item"><i class="fas fa-comments" style="color: #a259ff;"></i> دوبله</span>
-                <span class="marquee-item"><i class="fas fa-chart-line" style="color: #2496ed;"></i> صداگذاری</span>
-                <span class="marquee-item"><i class="fas fa-theater-masks" style="color: #f14e32;"></i> نمایش</span>
-            </div>
-        </div>
-    </section>
-    <!-- Stats Section -->
-    <section style="padding: 60px 20px;">
-        <div style="max-width: 1000px; margin: 0 auto;">
-            <div class="glass-strong glow-purple"
-                style="padding: 50px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center;">
-                <div class="reveal">
-                    <div class="stat-number gradient-text" data-target="50">0</div>
-                    <div style="color: rgba(255,255,255,0.5); margin-top: 8px; font-size: 14px;">پروژه تکمیل شده</div>
-                </div>
-                <div class="reveal reveal-delay-1">
-                    <div class="stat-number gradient-text" data-target="30">0</div>
-                    <div style="color: rgba(255,255,255,0.5); margin-top: 8px; font-size: 14px;">مشتری راضی</div>
-                </div>
-                <div class="reveal reveal-delay-2">
-                    <div class="stat-number gradient-text" data-target="5">0</div>
-                    <div style="color: rgba(255,255,255,0.5); margin-top: 8px; font-size: 14px;">سال تجربه</div>
+
+        <div class="section-title">ب) اندازه‌گیری جرم یک دانه عدس</div>
+        <p>تعداد زیادی دانه عدس هم‌اندازه و یکنواخت (مثلاً ۱۰۰ عدد) را شمرده و جرم کل آن‌ها را با یک ترازوی معمولی (حتی با دقت پایین) وزن می‌کنیم. سپس جرم یک دانه از رابطهٔ زیر به دست می‌آید:</p>
+
+        <div style="text-align: center;">
+            <div class="math-container">
+                <span class="math-var">m</span>
+                <span class="math-equal">=</span>
+                <div class="fraction">
+                    <span class="numerator">جرم کل دانه‌ها</span>
+                    <span class="denominator">تعداد کل دانه‌ها</span>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- About Section -->
-    <section id="about" style="padding: 100px 20px;">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <div class="reveal" style="text-align: center; margin-bottom: 60px;">
-                <h2 class="section-title" style="font-size: 2.5rem; font-weight: 900;">
-                    <span class="gradient-text">درباره من</span>
-                </h2>
-                <p style="color: rgba(255,255,255,0.5); margin-top: 20px;">کمی بیشتر درباره من بدانید</p>
-            </div>
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start;">
-                <!-- About Text -->
-                <div class="glass-card reveal" style="padding: 40px;">
-                    <div style="font-size: 28px; margin-bottom: 20px;">👨‍💻</div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 16px;">من کی هستم؟</h3>
-                    <p style="color: rgba(255,255,255,0.6); line-height: 2; font-size: 14px;">
 
-                        من ابوالفضل شریفی هستم، گوینده، مجری و طراح گرافیک حرفه‌ای. از کودکی عاشق هنر بودم و این عشق مرا
-                        به دنیای پرشور گویندگی و مجری‌گری کشاند. در کنار فعالیت‌های صوتی، در حوزه طراحی گرافیک نیز تجربه
-                        گسترده‌ای کسب کرده‌ام.
-                    </p>
-                    <p style="color: rgba(255,255,255,0.6); line-height: 2; font-size: 14px;">
-                        ‌
-                    </p>
-                    <p style="color: rgba(255,255,255,0.6); line-height: 2; font-size: 14px;">
-                        با بیش از ۳ سال تجربه در حوزه‌های مختلف رسانه‌ای و هنری، توانسته‌ام با برندها و سازمان‌های
-                        متعددی همکاری موفقی داشته باشم. هدف من ارائه خدمات حرفه‌ای با بالاترین کیفیت و خلق تجربه‌های
-                        به‌یادماندنی برای مخاطبان است.
-
-                    </p>
-                    <p style="color: rgba(255,255,255,0.6); line-height: 2; font-size: 14px;">
-                        ‌
-                    </p>
-
-                    </p>
-                    <p style="color: rgba(255,255,255,0.6); line-height: 2; font-size: 14px;">
-
-                        حوزه های فعالیت من به شرح زیر است:
-                    </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;">
-                        <span class="tag">گویندگی حرفه‌ای</span>
-                        <span class="tag tag-cyan">مجری‌گری رویداد</span>
-                        <span class="tag tag-pink">طراحی گرافیک</span>
-                        <span class="tag tag-cyan"> موشن گرافیک</span>
-                        <span class="tag tag-amber">تولید پادکست</span>
-                        <span class="tag">تیزر تبلیغاتی</span>
-                    </div>
-                </div>
-                <!-- Music Player Box -->
-                <div class="glass-card reveal reveal-delay-1" style="padding: 40px;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 24px;">
-                        <i class="fas fa-headphones" style="color: #8b5cf6; margin-left: 8px;"></i>
-                        نمونه صداها
-                    </h3>
-
-                    <!-- Audio Player Container -->
-                    <div style="display: flex; flex-direction: column; gap: 20px;">
-
-                        <!-- Track 1 -->
-                        <div class="music-player-card"
-                            style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 16px; padding: 20px; transition: all 0.3s ease;"
-                            onmouseenter="this.style.background='rgba(139, 92, 246, 0.15)'; this.style.transform='translateX(-5px)'"
-                            onmouseleave="this.style.background='rgba(139, 92, 246, 0.1)'; this.style.transform='translateX(0)'">
-                            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
-                                <!-- Album Art -->
-                                <div
-                                    style="width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, #8b5cf6, #6d28d9); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <i class="fas fa-microphone-alt" style="color: #fff; font-size: 20px;"></i>
-                                </div>
-                                <!-- Track Info -->
-                                <div style="flex: 1; min-width: 0;">
-                                    <div style="font-weight: 700; font-size: 14px; margin-bottom: 2px;">نریشن تبلیغاتی
-                                    </div>
-                                    <div style="font-size: 11px; color: rgba(255,255,255,0.4);">تیزر برند لوکس • 0:45
-                                    </div>
-                                </div>
-                                <!-- Play Button -->
-                                <button onclick="togglePlay('audio1', this)"
-                                    style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #8b5cf6, #6d28d9); border: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);"
-                                    onmouseenter="this.style.transform='scale(1.1)'"
-                                    onmouseleave="this.style.transform='scale(1)'">
-                                    <i class="fas fa-play" style="font-size: 14px; margin-right: -2px;"></i>
-                                </button>
-                            </div>
-                            <!-- Progress Bar -->
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <span class="current-time"
-                                    style="font-size: 10px; color: rgba(255,255,255,0.4); min-width: 35px;">0:00</span>
-                                <div style="flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; cursor: pointer; position: relative;"
-                                    onclick="seekAudio(event, 'audio1')">
-                                    <div class="progress-fill"
-                                        style="width: 0%; height: 100%; background: linear-gradient(90deg, #8b5cf6, #06b6d4); border-radius: 4px; transition: width 0.1s linear; position: relative;">
-                                        <div
-                                            style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 10px; height: 10px; background: #fff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.2s;">
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="duration"
-                                    style="font-size: 10px; color: rgba(255,255,255,0.4); min-width: 35px;">0:45</span>
-                            </div>
-                            <!-- Equalizer -->
-                            <div class="equalizer"
-                                style="display: none; justify-content: center; gap: 3px; height: 20px; align-items: flex-end; margin-top: 12px;">
-                                <div
-                                    style="width: 3px; background: #8b5cf6; border-radius: 2px; animation: eq1 0.5s ease infinite;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #8b5cf6; border-radius: 2px; animation: eq2 0.5s ease infinite 0.1s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #8b5cf6; border-radius: 2px; animation: eq3 0.5s ease infinite 0.2s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #8b5cf6; border-radius: 2px; animation: eq4 0.5s ease infinite 0.3s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #8b5cf6; border-radius: 2px; animation: eq5 0.5s ease infinite 0.15s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #06b6d4; border-radius: 2px; animation: eq2 0.5s ease infinite 0.25s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #06b6d4; border-radius: 2px; animation: eq1 0.5s ease infinite 0.35s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #06b6d4; border-radius: 2px; animation: eq3 0.5s ease infinite 0.05s;">
-                                </div>
-                            </div>
-                            <audio id="audio1"
-                                src="https://sv.musicc.ir/mp3s/2025-01-26/6795f3eb7a03c-cheshme-man-dariush(320).mp3"
-                                preload="metadata"></audio>
-                        </div>
-
-                        <!-- Track 2 -->
-                        <div class="music-player-card"
-                            style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.2); border-radius: 16px; padding: 20px; transition: all 0.3s ease;"
-                            onmouseenter="this.style.background='rgba(6, 182, 212, 0.15)'; this.style.transform='translateX(-5px)'"
-                            onmouseleave="this.style.background='rgba(6, 182, 212, 0.1)'; this.style.transform='translateX(0)'">
-                            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
-                                <!-- Album Art -->
-                                <div
-                                    style="width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, #06b6d4, #0891b2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <i class="fas fa-podcast" style="color: #fff; font-size: 20px;"></i>
-                                </div>
-                                <!-- Track Info -->
-                                <div style="flex: 1; min-width: 0;">
-                                    <div style="font-weight: 700; font-size: 14px; margin-bottom: 2px;">پادکست غبار
-                                    </div>
-                                    <div style="font-size: 11px; color: rgba(255,255,255,0.4);">پادکست‌های دلی • 5:09</div>
-                                </div>
-                                <!-- Play Button -->
-                                <button onclick="togglePlay('audio2', this)"
-                                    style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #06b6d4, #0891b2); border: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);"
-                                    onmouseenter="this.style.transform='scale(1.1)'"
-                                    onmouseleave="this.style.transform='scale(1)'">
-                                    <i class="fas fa-play" style="font-size: 14px; margin-right: -2px;"></i>
-                                </button>
-                            </div>
-                            <!-- Progress Bar -->
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <span class="current-time"
-                                    style="font-size: 10px; color: rgba(255,255,255,0.4); min-width: 35px;">0:00</span>
-                                <div style="flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; cursor: pointer; position: relative;"
-                                    onclick="seekAudio(event, 'audio2')">
-                                    <div class="progress-fill"
-                                        style="width: 0%; height: 100%; background: linear-gradient(90deg, #06b6d4, #ec4899); border-radius: 4px; transition: width 0.1s linear;">
-                                    </div>
-                                </div>
-                                <span class="duration"
-                                    style="font-size: 10px; color: rgba(255,255,255,0.4); min-width: 35px;">2:30</span>
-                            </div>
-                            <!-- Equalizer -->
-                            <div class="equalizer"
-                                style="display: none; justify-content: center; gap: 3px; height: 20px; align-items: flex-end; margin-top: 12px;">
-                                <div
-                                    style="width: 3px; background: #06b6d4; border-radius: 2px; animation: eq1 0.5s ease infinite;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #06b6d4; border-radius: 2px; animation: eq2 0.5s ease infinite 0.1s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #06b6d4; border-radius: 2px; animation: eq3 0.5s ease infinite 0.2s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #06b6d4; border-radius: 2px; animation: eq4 0.5s ease infinite 0.3s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #06b6d4; border-radius: 2px; animation: eq5 0.5s ease infinite 0.15s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #ec4899; border-radius: 2px; animation: eq2 0.5s ease infinite 0.25s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #ec4899; border-radius: 2px; animation: eq1 0.5s ease infinite 0.35s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #ec4899; border-radius: 2px; animation: eq3 0.5s ease infinite 0.05s;">
-                                </div>
-                            </div>
-                            <audio id="audio2"
-                                src="https://cdn.imgurl.ir/uploads/m604777__.mp3"
-                                preload="metadata"></audio>
-                        </div>
-
-                        <!-- Track 3 -->
-                        <div class="music-player-card"
-                            style="background: rgba(236, 72, 153, 0.1); border: 1px solid rgba(236, 72, 153, 0.2); border-radius: 16px; padding: 20px; transition: all 0.3s ease;"
-                            onmouseenter="this.style.background='rgba(236, 72, 153, 0.15)'; this.style.transform='translateX(-5px)'"
-                            onmouseleave="this.style.background='rgba(236, 72, 153, 0.1)'; this.style.transform='translateX(0)'">
-                            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
-                                <!-- Album Art -->
-                                <div
-                                    style="width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, #ec4899, #db2777); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <i class="fas fa-book-open" style="color: #fff; font-size: 18px;"></i>
-                                </div>
-                                <!-- Track Info -->
-                                <div style="flex: 1; min-width: 0;">
-                                    <div style="font-weight: 700; font-size: 14px; margin-bottom: 2px;">کتاب صوتی</div>
-                                    <div style="font-size: 11px; color: rgba(255,255,255,0.4);">فصل اول • 1:15</div>
-                                </div>
-                                <!-- Play Button -->
-                                <button onclick="togglePlay('audio3', this)"
-                                    style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #ec4899, #db2777); border: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);"
-                                    onmouseenter="this.style.transform='scale(1.1)'"
-                                    onmouseleave="this.style.transform='scale(1)'">
-                                    <i class="fas fa-play" style="font-size: 14px; margin-right: -2px;"></i>
-                                </button>
-                            </div>
-                            <!-- Progress Bar -->
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <span class="current-time"
-                                    style="font-size: 10px; color: rgba(255,255,255,0.4); min-width: 35px;">0:00</span>
-                                <div style="flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; cursor: pointer; position: relative;"
-                                    onclick="seekAudio(event, 'audio3')">
-                                    <div class="progress-fill"
-                                        style="width: 0%; height: 100%; background: linear-gradient(90deg, #ec4899, #f59e0b); border-radius: 4px; transition: width 0.1s linear;">
-                                    </div>
-                                </div>
-                                <span class="duration"
-                                    style="font-size: 10px; color: rgba(255,255,255,0.4); min-width: 35px;">1:15</span>
-                            </div>
-                            <!-- Equalizer -->
-                            <div class="equalizer"
-                                style="display: none; justify-content: center; gap: 3px; height: 20px; align-items: flex-end; margin-top: 12px;">
-                                <div
-                                    style="width: 3px; background: #ec4899; border-radius: 2px; animation: eq1 0.5s ease infinite;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #ec4899; border-radius: 2px; animation: eq2 0.5s ease infinite 0.1s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #ec4899; border-radius: 2px; animation: eq3 0.5s ease infinite 0.2s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #ec4899; border-radius: 2px; animation: eq4 0.5s ease infinite 0.3s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #ec4899; border-radius: 2px; animation: eq5 0.5s ease infinite 0.15s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #f59e0b; border-radius: 2px; animation: eq2 0.5s ease infinite 0.25s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #f59e0b; border-radius: 2px; animation: eq1 0.5s ease infinite 0.35s;">
-                                </div>
-                                <div
-                                    style="width: 3px; background: #f59e0b; border-radius: 2px; animation: eq3 0.5s ease infinite 0.05s;">
-                                </div>
-                            </div>
-                            <audio id="audio3"
-                                src="https://sv.musicc.ir/mp3s/2025-01-26/6795f5bc2f7d9-khooneh-dariush(320).mp3"
-                                preload="metadata"></audio>
-                        </div>
-
-                    </div>
-                </div>
-
-                <style>
-                    @keyframes eq1 {
-
-                        0%,
-                        100% {
-                            height: 4px;
-                        }
-
-                        50% {
-                            height: 18px;
-                        }
-                    }
-
-                    @keyframes eq2 {
-
-                        0%,
-                        100% {
-                            height: 8px;
-                        }
-
-                        50% {
-                            height: 14px;
-                        }
-                    }
-
-                    @keyframes eq3 {
-
-                        0%,
-                        100% {
-                            height: 12px;
-                        }
-
-                        50% {
-                            height: 20px;
-                        }
-                    }
-
-                    @keyframes eq4 {
-
-                        0%,
-                        100% {
-                            height: 6px;
-                        }
-
-                        50% {
-                            height: 16px;
-                        }
-                    }
-
-                    @keyframes eq5 {
-
-                        0%,
-                        100% {
-                            height: 10px;
-                        }
-
-                        50% {
-                            height: 18px;
-                        }
-                    }
-
-                    .music-player-card:hover .progress-fill>div {
-                        opacity: 1 !important;
-                    }
-                </style>
-
-                <script>
-                    let currentlyPlaying = null;
-
-                    function togglePlay(audioId, button) {
-                        const audio = document.getElementById(audioId);
-                        const card = button.closest('.music-player-card');
-                        const icon = button.querySelector('i');
-                        const equalizer = card.querySelector('.equalizer');
-
-                        // Stop currently playing audio if different
-                        if (currentlyPlaying && currentlyPlaying !== audio) {
-                            currentlyPlaying.pause();
-                            const prevCard = currentlyPlaying.closest('.music-player-card');
-                            const prevButton = prevCard.querySelector('button');
-                            const prevIcon = prevButton.querySelector('i');
-                            const prevEqualizer = prevCard.querySelector('.equalizer');
-                            prevIcon.className = 'fas fa-play';
-                            prevIcon.style.marginRight = '-2px';
-                            prevEqualizer.style.display = 'none';
-                        }
-
-                        if (audio.paused) {
-                            audio.play();
-                            icon.className = 'fas fa-pause';
-                            icon.style.marginRight = '0';
-                            equalizer.style.display = 'flex';
-                            currentlyPlaying = audio;
-                        } else {
-                            audio.pause();
-                            icon.className = 'fas fa-play';
-                            icon.style.marginRight = '-2px';
-                            equalizer.style.display = 'none';
-                            currentlyPlaying = null;
-                        }
-                    }
-
-                    function seekAudio(event, audioId) {
-                        const audio = document.getElementById(audioId);
-                        const progressBar = event.currentTarget;
-                        const rect = progressBar.getBoundingClientRect();
-                        const clickX = event.clientX - rect.left;
-                        const width = rect.width;
-                        const seekTime = (clickX / width) * audio.duration;
-                        audio.currentTime = seekTime;
-                    }
-
-                    function formatTime(seconds) {
-                        const mins = Math.floor(seconds / 60);
-                        const secs = Math.floor(seconds % 60);
-                        return `${mins}:${secs.toString().padStart(2, '0')}`;
-                    }
-
-                    // Update progress bars
-                    document.querySelectorAll('audio').forEach(audio => {
-                        audio.addEventListener('timeupdate', () => {
-                            const card = audio.closest('.music-player-card');
-                            const progressFill = card.querySelector('.progress-fill');
-                            const currentTimeEl = card.querySelector('.current-time');
-
-                            const progress = (audio.currentTime / audio.duration) * 100;
-                            progressFill.style.width = progress + '%';
-                            currentTimeEl.textContent = formatTime(audio.currentTime);
-                        });
-
-                        audio.addEventListener('loadedmetadata', () => {
-                            const card = audio.closest('.music-player-card');
-                            const durationEl = card.querySelector('.duration');
-                            durationEl.textContent = formatTime(audio.duration);
-                        });
-
-                        audio.addEventListener('ended', () => {
-                            const card = audio.closest('.music-player-card');
-                            const button = card.querySelector('button');
-                            const icon = button.querySelector('i');
-                            const equalizer = card.querySelector('.equalizer');
-                            const progressFill = card.querySelector('.progress-fill');
-
-                            icon.className = 'fas fa-play';
-                            icon.style.marginRight = '-2px';
-                            equalizer.style.display = 'none';
-                            progressFill.style.width = '0%';
-                            currentlyPlaying = null;
-                        });
-                    });
-                </script>
-    </section>
-    <!-- Skills Section -->
-    <section id="skills" style="padding: 100px 20px;">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <div class="reveal" style="text-align: center; margin-bottom: 60px;">
-                <h2 class="section-title" style="font-size: 2.5rem; font-weight: 900;">
-                    <span class="gradient-text">مهارت‌ها</span>
-                </h2>
-                <p style="color: rgba(255,255,255,0.5); margin-top: 20px;">هنرهایی که با آن‌ها کار می‌کنم</p>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <!-- Skill Cards -->
-                <div class="glass-card reveal" style="padding: 35px;">
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-                        <div
-                            style="width: 50px; height: 50px; border-radius: 14px; background: rgba(139, 92, 246, 0.2); display: flex; align-items: center; justify-content: center; font-size: 24px;">
-                            <i class="fas fa-microphone" style="color: #8b5cf6;"></i>
-                        </div>
-                        <div>
-                            <h3 style="font-weight: 700;">آوایی</h3>
-                            <p style="font-size: 12px; color: rgba(255,255,255,0.4);">مهارت‌های آوایی و صوتی </p>
-                        </div>
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 18px;">
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px;">
-                                <span>پادکست</span><span style="color: #8b5cf6;">95%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" data-width="95"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px;">
-                                <span>کتاب صوتی </span><span style="color: #8b5cf6;">88%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" data-width="88"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px;">
-                                <span>نریشن تبلیغاتی</span><span style="color: #8b5cf6;">90%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" data-width="90"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px;">
-                                <span>دوبله</span><span style="color: #8b5cf6;">52%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" data-width="52"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass-card reveal reveal-delay-1" style="padding: 35px;">
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-                        <div
-                            style="width: 50px; height: 50px; border-radius: 14px; background: rgba(6, 182, 212, 0.2); display: flex; align-items: center; justify-content: center; font-size: 24px;">
-                            <i class="fas fa-theater-masks" style="color: #06b6d4;"></i>
-                        </div>
-                        <div>
-                            <h3 style="font-weight: 700;">مهارت‌های صحنه‌ای</h3>
-                            <p style="font-size: 12px; color: rgba(255,255,255,0.4);">مجری گری برنامه</p>
-                        </div>
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 18px;">
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px;">
-                                <span> مراسمات و همایش‌ها</span><span style="color: #06b6d4;">90%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" data-width="90"
-                                    style="background: linear-gradient(90deg, #06b6d4, #8b5cf6);"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px;">
-                                <span>تیزر تبلیغاتی</span><span style="color: #06b6d4;">73%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" data-width="73"
-                                    style="background: linear-gradient(90deg, #06b6d4, #8b5cf6);"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px;">
-                                <span>مسابقات و جشنواره</span><span style="color: #06b6d4;">87%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" data-width="87"
-                                    style="background: linear-gradient(90deg, #06b6d4, #8b5cf6);"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px;">
-                                <span>نمایش صحنه‌ای</span><span style="color: #06b6d4;">58%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" data-width="58"
-                                    style="background: linear-gradient(90deg, #06b6d4, #8b5cf6);"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass-card reveal reveal-delay-2" style="padding: 35px;">
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-                        <div
-                            style="width: 50px; height: 50px; border-radius: 14px; background: rgba(236, 72, 153, 0.2); display: flex; align-items: center; justify-content: center; font-size: 24px;">
-                            <i class="fas fa-paint-brush" style="color: #ec4899;"></i>
-                        </div>
-                        <div>
-                            <h3 style="font-weight: 700;">طراحی و تدوین</h3>
-                            <p style="font-size: 12px; color: rgba(255,255,255,0.4);">جلوه‌های بصری و تصویری</p>
-                        </div>
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 18px;">
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px;">
-                                <span>Adobe Photoshop</span><span style="color: #ec4899;">93%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" data-width="93"
-                                    style="background: linear-gradient(90deg, #ec4899, #8b5cf6);"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px;">
-                                <span>Adobe Primire Pro</span><span style="color: #ec4899;">85%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" data-width="85"
-                                    style="background: linear-gradient(90deg, #ec4899, #8b5cf6);"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px;">
-                                <span>Adobe Illustrator</span><span style="color: #ec4899;">65%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" data-width="65"
-                                    style="background: linear-gradient(90deg, #ec4899, #8b5cf6);"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px;">
-                                <span>Adobe AfterEffects</span><span style="color: #ec4899;">75%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" data-width="75"
-                                    style="background: linear-gradient(90deg, #ec4899, #8b5cf6);"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="highlight-box">
+            <p><strong>مبنای علمی هر دو روش:</strong> هر دو آزمایش بر پایهٔ <strong>«روش تکثیر در اندازه‌گیری»</strong> طراحی شده‌اند. با جمع کردن مقادیر کوچک و تبدیل آن به یک کمیت بزرگ‌تر قابل سنجش، خطای ابزار و خطای فردی سیستماتیک به شدت کاهش می‌یابد.</p>
         </div>
-    </section>
-    <!-- Projects Section -->
-    <section id="projects" style="padding: 100px 20px;">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <div class="reveal" style="text-align: center; margin-bottom: 60px;">
-                <h2 class="section-title" style="font-size: 2.5rem; font-weight: 900;">
-                    <span class="gradient-text">پروژه‌ها</span>
-                </h2>
-                <p style="color: rgba(255,255,255,0.5); margin-top: 20px;">برخی از آخرین کارهای من</p>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-                <!-- Project 1 -->
-                <div class="glass-card project-card reveal"
-                    style="padding: 24px; position: relative; overflow: hidden;">
-                    <div class="project-thumb"
-                        style="background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(6,182,212,0.3));"><img
-                            alt="Project Image" src="https://images.unsplash.com/photo-1549680342-9fbe96c4e1ad"
-                            style="width:100%; height:auto;" /></div>
-                    <h3 style="font-weight: 700; font-size: 1.2rem; margin-bottom: 8px;">طراحی پوستر جشنواره</h3>
-                    <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; line-height: 1.8;">
-                        پلتفرم فروشگاه آنلاین با قابلیت‌های پیشرفته مدیریت محصولات و پرداخت آنلاین
-                    </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;">
-                        <span class="tag">React</span>
-                        <span class="tag tag-cyan">Node.js</span>
-                        <span class="tag tag-pink">MongoDB</span>
-                    </div>
-                    <div style="display: flex; gap: 12px;">
-                        <a href="#" style="color: #8b5cf6; font-size: 13px; text-decoration: none;"><i
-                                class="fas fa-external-link-alt" style="margin-left: 4px;"></i> مشاهده</a>
-                        <a href="#" style="color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none;"><i
-                                class="fab fa-github" style="margin-left: 4px;"></i> سورس‌کد</a>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="glass-card project-card reveal reveal-delay-1"
-                    style="padding: 24px; position: relative; overflow: hidden;">
-                    <div class="project-thumb"
-                        style="background: linear-gradient(135deg, rgba(236,72,153,0.3), rgba(245,158,11,0.3));"><img
-                            alt="Project Image" src="https://cdn.imgurl.ir/uploads/s861324_Untitled-3.png"
-                            style="width:100%; height:auto;" /></div>
-                    <h3 style="font-weight: 700; font-size: 1.2rem; margin-bottom: 8px;">گردهمایی و نشست مدیران</h3>
-                    <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; line-height: 1.8;">
-                        اجرای مراسمات گردهمایی و نشست‌های مدیریتی
-                        همراه با بخش های مختلف و سخرانی‌های متعدد
-                    </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;">
-                        <span class="tag">مجری‌گری رویداد</span>
-                        <span class="tag tag-amber">تبلیغات</span>
-                    </div>
-                    <div style="display: flex; gap: 12px;">
-                        <a href="#" style="color: #ec4899; font-size: 13px; text-decoration: none;"><i
-                                class="fas fa-external-link-alt" style="margin-left: 4px;"></i> مشاهده</a>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="glass-card project-card reveal reveal-delay-2"
-                    style="padding: 24px; position: relative; overflow: hidden;">
-                    <div class="project-thumb"
-                        style="background: linear-gradient(135deg, rgba(6,182,212,0.3), rgba(139,92,246,0.3));"><img
-                            alt="Project Image" src="https://images.unsplash.com/photo-1517481084-240b7c5c1bc7"
-                            style="width:100%; height:auto;" /></div>
-                    <h3 style="font-weight: 700; font-size: 1.2rem; margin-bottom: 8px;">هویت بصری برند لوکس</h3>
-                    <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; line-height: 1.8;">
-                        پنل مدیریت پیشرفته با نمودارهای تعاملی و گزارش‌گیری هوشمند
-                    </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;">
-                        <span class="tag tag-cyan">Next.js</span>
-                        <span class="tag">D3.js</span>
-                        <span class="tag tag-pink">PostgreSQL</span>
-                    </div>
-                    <div style="display: flex; gap: 12px;">
-                        <a href="#" style="color: #06b6d4; font-size: 13px; text-decoration: none;"><i
-                                class="fas fa-external-link-alt" style="margin-left: 4px;"></i> مشاهده</a>
-                        <a href="#" style="color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none;"><i
-                                class="fab fa-github" style="margin-left: 4px;"></i> سورس‌کد</a>
-                    </div>
-                </div>
-                <!-- Project 4 -->
-                <div class="glass-card project-card reveal reveal-delay-3"
-                    style="padding: 24px; position: relative; overflow: hidden;">
-                    <div class="project-thumb"
-                        style="background: linear-gradient(135deg, rgba(245,158,11,0.3), rgba(236,72,153,0.3));"><img
-                            alt="Project Image" src="https://cdn.imgurl.ir/uploads/u593136_Untitled-4.png"
-                            style="width:100%; height:auto;" /></div>
-                    <h3 style="font-weight: 700; font-size: 1.2rem; margin-bottom: 8px;">مجری‌گری همایش ملی</h3>
-                    <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; line-height: 1.8;">
-                        اجرای همایش‌های ملی و استانی با هماهنگی مناسب
-                        برای اشخاص حقیقی و سازمان‌های حقوقی
-                    </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;">
-                        <span class="tag">مجری‌گری رویداد</span>
-                        <span class="tag tag-amber">تبلیغات</span>
-                    </div>
-                    <div style="display: flex; gap: 12px;">
-                        <a href="#" style="color: #ec4899; font-size: 13px; text-decoration: none;"><i
-                                class="fas fa-external-link-alt" style="margin-left: 4px;"></i> مشاهده</a>
-                    </div>
-                </div>
-                <!-- Project 5 -->
-                <div class="glass-card project-card reveal reveal-delay-3"
-                    style="padding: 24px; position: relative; overflow: hidden;">
-                    <div class="project-thumb"
-                        style="background: linear-gradient(135deg, rgba(16,185,129,0.3), rgba(6,182,212,0.3));"><img
-                            alt="Project Image" src="https://images.unsplash.com/photo-1598574927223-63b39b933406"
-                            style="width:100%; height:auto;" /></div>
-                    <h3 style="font-weight: 700; font-size: 1.2rem; margin-bottom: 8px;">طراحی لوگو مینیمال</h3>
-                    <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; line-height: 1.8;">
-                        اپلیکیشن ردیابی سلامت و تناسب اندام با اتصال به دستگاه‌های هوشمند
-                    </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;">
-                        <span class="tag">React Native</span>
-                        <span class="tag tag-pink">Firebase</span>
-                        <span class="tag tag-amber">HealthKit</span>
-                    </div>
-                    <div style="display: flex; gap: 12px;">
-                        <a href="#" style="color: #10b981; font-size: 13px; text-decoration: none;"><i
-                                class="fas fa-external-link-alt" style="margin-left: 4px;"></i> مشاهده</a>
-                        <a href="#" style="color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none;"><i
-                                class="fab fa-github" style="margin-left: 4px;"></i> سورس‌کد</a>
-                    </div>
-                </div>
-                <!-- Project 6 -->
-                <div class="glass-card project-card reveal reveal-delay-4"
-                    style="padding: 24px; position: relative; overflow: hidden;">
-                    <div class="project-thumb"
-                        style="background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(236,72,153,0.3));"><img
-                            alt="Project Image" src="https://images.unsplash.com/photo-1512447282650-c11caabfed0f"
-                            style="width:100%; height:auto;" /></div>
-                    <h3 style="font-weight: 700; font-size: 1.2rem; margin-bottom: 8px;">پادکست کسب‌وکار</h3>
-                    <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; line-height: 1.8;">
-                        سامانه آموزش آنلاین با قابلیت برگزاری کلاس زنده و آزمون آنلاین
-                    </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;">
-                        <span class="tag">Next.js</span>
-                        <span class="tag tag-cyan">Prisma</span>
-                        <span class="tag tag-amber">Stripe</span>
-                    </div>
-                    <div style="display: flex; gap: 12px;">
-                        <a href="#" style="color: #8b5cf6; font-size: 13px; text-decoration: none;"><i
-                                class="fas fa-external-link-alt" style="margin-left: 4px;"></i> مشاهده</a>
-                        <a href="#" style="color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none;"><i
-                                class="fab fa-github" style="margin-left: 4px;"></i> سورس‌کد</a>
-                    </div>
-                </div>
-            </div>
+    </div>
+
+    <!-- سوال ۴ -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">سوال ۴</div>
+            <div class="badge">۴ نمره</div>
         </div>
-    </section>
-    <!-- Testimonials -->
-    <section style="padding: 100px 20px;">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <div class="reveal" style="text-align: center; margin-bottom: 60px;">
-                <h2 class="section-title" style="font-size: 2.5rem; font-weight: 900;">
-                    <span class="gradient-text">نظرات مشتریان</span>
-                </h2>
-                <p style="color: rgba(255,255,255,0.5); margin-top: 20px;">آنچه مشتریان درباره من می‌گویند</p>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div class="glass-card reveal" style="padding: 35px;">
-                    <div style="display: flex; gap: 6px; margin-bottom: 16px;">
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                    </div>
-                    <p style="color: rgba(255,255,255,0.6); font-size: 14px; line-height: 2; margin-bottom: 20px;">
-                        "«طراحی لوگو و هویت بصری برندمان توسط ابوالفضل بی‌نظیر بود. خلاقیت و دقت ایشان واقعاً قابل تحسین
-                        است.»"
-                    </p>
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <div
-                            style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #8b5cf6, #06b6d4); display: flex; align-items: center; justify-content: center; font-weight: 700;">
-                            م</div>
-                        <div>
-                            <div style="font-weight: 700; font-size: 14px;">محمد احمدی</div>
-                            <div style="font-size: 12px; color: rgba(255,255,255,0.4);">مدیرعامل شرکت دیجی‌تک</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass-card reveal reveal-delay-1" style="padding: 35px;">
-                    <div style="display: flex; gap: 6px; margin-bottom: 16px;">
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                    </div>
-                    <p style="color: rgba(255,255,255,0.6); font-size: 14px; line-height: 2; margin-bottom: 20px;">
-                        "«همکاری با آقای شریفی تجربه فوق‌العاده‌ای بود. صدای ایشان به تیزر تبلیغاتی ما جان بخشید.
-                        حرفه‌ای و خلاق!»"
-                    </p>
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <div
-                            style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #ec4899, #f59e0b); display: flex; align-items: center; justify-content: center; font-weight: 700;">
-                            س</div>
-                        <div>
-                            <div style="font-weight: 700; font-size: 14px;">سارا محمدی</div>
-                            <div style="font-size: 12px; color: rgba(255,255,255,0.4);">بنیان‌گذار استارتاپ نوین</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass-card reveal reveal-delay-2" style="padding: 35px;">
-                    <div style="display: flex; gap: 6px; margin-bottom: 16px;">
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                        <i class="fas fa-star" style="color: #f59e0b; font-size: 14px;"></i>
-                        <i class="fas fa-star-half-alt" style="color: #f59e0b; font-size: 14px;"></i>
-                    </div>
-                    <p style="color: rgba(255,255,255,0.6); font-size: 14px; line-height: 2; margin-bottom: 20px;">
-                        "«مجری‌گری همایش سالانه‌مان توسط آقای شریفی عالی بود. انرژی مثبت و حرفه‌ای‌گری ایشان مراسم ما را
-                        خاص کرد.»"
-                    </p>
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <div
-                            style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #06b6d4, #8b5cf6); display: flex; align-items: center; justify-content: center; font-weight: 700;">
-                            ع</div>
-                        <div>
-                            <div style="font-weight: 700; font-size: 14px;">علی رضایی</div>
-                            <div style="font-size: 12px; color: rgba(255,255,255,0.4);">مدیر فنی شرکت پارس‌داده</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="section-title">آزمایش بررسی نمودار حجم گاز برحسب دما (قانون شارل)</div>
+        <p>مراحل انجام آزمایش به شرح زیر است:</p>
+        <ul>
+            <li>مقداری گاز (هوا) را در یک لولهٔ مویین که یک سر آن بسته است محبوس می‌کنیم. برای مشخص کردن مرز گاز و ایزوله کردن آن، از یک قطرهٔ کوچک جیوه یا اسید سولفوریک به عنوان شاخص متحرک استفاده می‌کنیم.</li>
+            <li>در دمای اتاق، طول اولیهٔ ستون گاز محبوس (که متناسب با حجم آن است) را به کمک یک خط‌کش با دقت ثبت می‌کنیم.</li>
+            <li>لولهٔ مویین را در یک حمام آب (بشر حاوی آب) قرار می‌دهیم که دمای آن به راحتی قابل تنظیم و گرمایش باشد.</li>
+            <li>آب را به‌تدریج و پله‌پله گرم می‌کنیم. در هر مرحله مدتی صبر می‌کنیم تا تعادل دمایی کامل بین آب و گاز درون لوله برقرار شود؛ سپس دما را از روی دماسنج و طول ستون گاز را از روی خط‌کش یادداشت می‌کنیم.</li>
+            <li>این فرآیند را برای چند دمای مختلف تکرار کرده تا جدول داده‌های آزمایش کامل شود.</li>
+            <li>در نهایت، نموداری رسم می‌کنیم که محور افقی آن نشان‌دهندهٔ <strong>دما (T)</strong> و محور عمودی نشان‌دهندهٔ <strong>حجم یا همان طول ستون گاز (V)</strong> باشد. نتیجهٔ این نمودار یک <strong>خط راست</strong> خواهد بود که بیانگر صحت <strong>قانون شارل</strong> است (حجم گاز در فشار ثابت، با دمای مطلق آن نسبت مستقیم دارد).</li>
+        </ul>
+    </div>
+
+    <!-- سوال ۵ -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">سوال ۵</div>
+            <div class="badge">۴ نمره</div>
         </div>
-    </section>
-    <!-- Contact Section -->
-    <section id="contact" style="padding: 100px 20px;">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <div class="reveal" style="text-align: center; margin-bottom: 60px;">
-                <h2 class="section-title" style="font-size: 2.5rem; font-weight: 900;">
-                    <span class="gradient-text">تماس با من</span>
-                </h2>
-                <p style="color: rgba(255,255,255,0.5); margin-top: 20px;">بیایید با هم پروژه بعدی را بسازیم</p>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-                <!-- Contact Info -->
-                <div class="reveal">
-                    <div class="glass-card" style="padding: 35px; margin-bottom: 24px;">
-                        <div style="display: flex; align-items: center; gap: 16px;">
-                            <div
-                                style="width: 50px; height: 50px; border-radius: 14px; background: rgba(139, 92, 246, 0.2); display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-envelope" style="color: #8b5cf6; font-size: 20px;"></i>
-                            </div>
-                            <div>
-                                <div style="font-size: 12px; color: rgba(255,255,255,0.4);">ایمیل</div>
-                                <div dir="ltr" style="font-weight: 600; font-size: 14px;">ab.shar1387@gmail.com
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="glass-card" style="padding: 35px; margin-bottom: 24px;">
-                        <div style="display: flex; align-items: center; gap: 16px;">
-                            <div
-                                style="width: 50px; height: 50px; border-radius: 14px; background: rgba(6, 182, 212, 0.2); display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-phone" style="color: #06b6d4; font-size: 20px;"></i>
-                            </div>
-                            <div>
-                                <div style="font-size: 12px; color: rgba(255,255,255,0.4);">تلفن</div>
-                                <div dir="ltr" style="font-weight: 600; font-size: 14px;">+98 914 0750 113</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="glass-card" style="padding: 35px;">
-                        <div style="display: flex; align-items: center; gap: 16px;">
-                            <div
-                                style="width: 50px; height: 50px; border-radius: 14px; background: rgba(236, 72, 153, 0.2); display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-map-marker-alt" style="color: #ec4899; font-size: 20px;"></i>
-                            </div>
-                            <div>
-                                <div style="font-size: 12px; color: rgba(255,255,255,0.4);">موقعیت</div>
-                                <div style="font-weight: 600; font-size: 14px;">یزد، ایران</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Contact Form -->
-                <div class="glass-card reveal reveal-delay-1" style="padding: 40px;">
-                    <form onsubmit="handleSubmit(event)">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-                            <input class="form-input" placeholder="نام شما" required="" type="text" />
-                            <input class="form-input" placeholder="ایمیل شما" required="" type="email" />
-                        </div>
-                        <input class="form-input" placeholder="موضوع" required="" style="margin-bottom: 16px;"
-                            type="text" />
-                        <textarea class="form-input" placeholder="پیام شما..." required="" rows="5"
-                            style="resize: none; margin-bottom: 24px;"></textarea>
-                        <button class="btn-primary" style="width: 100%;" type="submit">
-                            <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
-                            ارسال پیام
-                        </button>
-                    </form>
-                    <div id="formSuccess"
-                        style="display: none; text-align: center; padding: 20px; color: #10b981; margin-top: 16px;">
-                        <i class="fas fa-check-circle" style="font-size: 24px; margin-bottom: 8px;"></i>
-                        <p>پیام شما با موفقیت ارسال شد! 🎉</p>
-                    </div>
-                </div>
-            </div>
+        <div class="section-title">روش آزمایشگاهی تشخیص زعفران اصل از تقلبی</div>
+        <p>مقداری از رشته‌های زعفران مورد نظر را در یک لیوان حاوی آب سرد یا ولرم قرار داده و بدون هم‌زدن، تغییرات آن را برای چند دقیقه زیر نظر می‌گیریم:</p>
+        <ul>
+            <li><strong>زعفران اصل:</strong> رنگ‌دانهٔ طبیعی زعفران (کروسین) به صورت کاملاً آرام، ملایم و تدریجی طی چند دقیقه در آب پخش می‌شود و رنگ آب را به زرد طلایی شفاف تبدیل می‌کند و خود رشته‌های زعفران قرمز باقی می‌مانند.</li>
+            <li><strong>زعفران تقلبی (رنگ‌شده):</strong> در صورتی که از گیاهان مشابه مانند گل‌رنگ یا الیاف مصنوعی رنگ‌شده استفاده شده باشد، رنگ آن به سرعت و فوراً (در عرض چند ثانیه) وارد آب شده و محیط را به رنگ تند، کدر یا قرمز غیرطبیعی متمایل می‌کند.</li>
+        </ul>
+        <div class="highlight-box">
+            <p><strong>معیار اصلی و کلیدی تشخیص:</strong> سرعت و نحوهٔ رنگ‌دهی در آب؛ در نمونهٔ <strong>اصل</strong> فرآیند به صورت <strong>تدریجی</strong> و در نمونهٔ <strong>تقلبی</strong> فرآیند به صورت <strong>آنی و فوری</strong> رخ می‌دهد.</p>
         </div>
-    </section>
-    <!-- Footer -->
-    <footer style="padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05);">
-        <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
-                <div
-                    style="width: 36px; height: 36px; background: linear-gradient(135deg, #8b5cf6, #06b6d4); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px;">
-                    A</div>
-                <span style="font-weight: 700;">Abolfazl Sharifi</span>
-            </div>
-            <div style="display: flex; justify-content: center; gap: 16px; margin-bottom: 20px;">
-                <a class="social-icon github" href="#"
-                    style="width: 40px; height: 40px; border-radius: 12px; font-size: 16px;"><i
-                        class="fab fa-github"></i></a>
-                <a class="social-icon linkedin" href="#"
-                    style="width: 40px; height: 40px; border-radius: 12px; font-size: 16px;"><i
-                        class="fab fa-linkedin-in"></i></a>
-                <a class="social-icon telegram" href="#"
-                    style="width: 40px; height: 40px; border-radius: 12px; font-size: 16px;"><i
-                        class="fab fa-telegram-plane"></i></a>
-                <a class="social-icon twitter" href="#"
-                    style="width: 40px; height: 40px; border-radius: 12px; font-size: 16px;"><i
-                        class="fab fa-twitter"></i></a>
-            </div>
-            <p style="color: rgba(255,255,255,0.3); font-size: 13px;">
-                ساخته شده با <span style="color: #ec4899;">❤</span> توسط ابوالفضل شریفی © ۱۴۰۳
-            </p>
-        </div>
+    </div>
+
+    <footer>
+        <p>طراحی شده به صورت وب‌سایت رسمی و ساختاریافته | آزمایشگاه علوم تجربی یازدهم</p>
     </footer>
-    <!-- Back to Top -->
-    <button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})"
-        style="position: fixed; bottom: 30px; left: 30px; width: 50px; height: 50px; border-radius: 16px; background: rgba(139,92,246,0.3); backdrop-filter: blur(10px); border: 1px solid rgba(139,92,246,0.3); color: #fff; font-size: 18px; cursor: pointer; display: none; align-items: center; justify-content: center; z-index: 100; transition: all 0.3s ease;">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    <script>
-        // Custom Cursor
-        const cursorFollower = document.getElementById('cursorFollower');
-        const cursorDot = document.getElementById('cursorDot');
-        let mouseX = 0, mouseY = 0;
-        let followerX = 0, followerY = 0;
+</div>
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursorDot.style.left = mouseX + 'px';
-            cursorDot.style.top = mouseY + 'px';
-        });
-
-        function animateCursor() {
-            followerX += (mouseX - followerX) * 0.1;
-            followerY += (mouseY - followerY) * 0.1;
-            cursorFollower.style.left = followerX + 'px';
-            cursorFollower.style.top = followerY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Hover effect on links
-        document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorFollower.style.width = '50px';
-                cursorFollower.style.height = '50px';
-                cursorFollower.style.borderColor = 'rgba(139, 92, 246, 0.8)';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorFollower.style.width = '30px';
-                cursorFollower.style.height = '30px';
-                cursorFollower.style.borderColor = 'rgba(139, 92, 246, 0.5)';
-            });
-        });
-
-        // Navigation
-        function setActive(el) {
-            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-            el.classList.add('active');
-            // Close mobile menu
-            document.getElementById('navLinks').classList.remove('show');
-            document.getElementById('menuIcon').className = 'fas fa-bars';
-        }
-
-        function toggleMenu() {
-            const nav = document.getElementById('navLinks');
-            const icon = document.getElementById('menuIcon');
-            nav.classList.toggle('show');
-            icon.className = nav.classList.contains('show') ? 'fas fa-times' : 'fas fa-bars';
-        }
-
-        // Scroll spy
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const scrollY = window.pageYOffset;
-
-            sections.forEach(section => {
-                const sectionHeight = section.offsetHeight;
-                const sectionTop = section.offsetTop - 200;
-                const sectionId = section.getAttribute('id');
-
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    document.querySelectorAll('.nav-link').forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === '#' + sectionId) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-
-            // Back to top button
-            const btn = document.getElementById('backToTop');
-            if (scrollY > 500) {
-                btn.style.display = 'flex';
-            } else {
-                btn.style.display = 'none';
-            }
-        });
-
-        // Reveal on scroll
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const elementTop = el.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
-                    el.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('load', revealOnScroll);
-
-        // Skill bar animation
-        function animateSkillBars() {
-            const bars = document.querySelectorAll('.skill-bar-fill');
-            bars.forEach(bar => {
-                const rect = bar.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    const width = bar.getAttribute('data-width');
-                    bar.style.width = width + '%';
-                }
-            });
-        }
-
-        window.addEventListener('scroll', animateSkillBars);
-        window.addEventListener('load', animateSkillBars);
-
-        // Counter animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            counters.forEach(counter => {
-                const rect = counter.getBoundingClientRect();
-                if (rect.top < window.innerHeight && !counter.classList.contains('counted')) {
-                    counter.classList.add('counted');
-                    const target = parseInt(counter.getAttribute('data-target'));
-                    let current = 0;
-                    const increment = target / 60;
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            counter.textContent = target + '+';
-                            clearInterval(timer);
-                        } else {
-                            counter.textContent = Math.floor(current) + '+';
-                        }
-                    }, 30);
-                }
-            });
-        }
-
-        window.addEventListener('scroll', animateCounters);
-        window.addEventListener('load', animateCounters);
-
-        // Form submission
-        function handleSubmit(e) {
-            e.preventDefault();
-            const form = e.target;
-            const success = document.getElementById('formSuccess');
-            form.style.display = 'none';
-            success.style.display = 'block';
-            setTimeout(() => {
-                form.style.display = 'block';
-                success.style.display = 'none';
-                form.reset();
-            }, 3000);
-        }
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Particle effect on click
-        document.addEventListener('click', (e) => {
-            for (let i = 0; i < 6; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                const size = Math.random() * 10 + 5;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                particle.style.left = e.clientX + 'px';
-                particle.style.top = e.clientY + 'px';
-                const angle = (Math.PI * 2 * i) / 6;
-                const velocity = Math.random() * 80 + 40;
-                particle.style.transform = `translate(${Math.cos(angle) * velocity}px, ${Math.sin(angle) * velocity}px)`;
-                document.body.appendChild(particle);
-                setTimeout(() => particle.remove(), 1000);
-            }
-        });
-    </script>
-    <!-- Loop Text Script -->
-    <script>
-        const text = "مجری، گوینده و طراح گرافیک";
-        const element = document.getElementById("loopText");
-
-        let index = 0;
-        let isDeleting = false;
-
-        function typeLoop() {
-            if (!isDeleting) {
-                element.textContent = text.slice(0, index++);
-                if (index > text.length) {
-                    setTimeout(() => isDeleting = true, 1200);
-                }
-            } else {
-                element.textContent = text.slice(0, index--);
-                if (index === 0) {
-                    isDeleting = false;
-                }
-            }
-
-            setTimeout(typeLoop, isDeleting ? 40 : 70);
-        }
-
-        typeLoop();
-    </script>
 </body>
-
 </html>
