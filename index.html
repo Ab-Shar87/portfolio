@@ -3,348 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پاسخ‌نامه آزمایشگاه علوم تجربی - پایه یازدهم</title>
+    <title>تست BoxAPI</title>
     <style>
-        :root {
-            --bg-gradient: radial-gradient(circle at top left, #0f172a, #020617);
-            --card-bg: rgba(30, 41, 59, 0.45);
-            --card-border: rgba(0, 180, 216, 0.2);
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent-teal: #00b4d8;
-            --accent-silver: #cbd5e1;
-            --badge-bg: linear-gradient(135deg, #00b4d8, #0077b6);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            font-family: 'Peyda', 'IRANSans', 'Vazirmatn', Tahoma, sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text-primary);
-            min-height: 100vh;
-            line-height: 1.8;
-            padding: 40px 20px;
+            font-family: Tahoma, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f0f4ff;
+            direction: rtl;
         }
-
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        header h1 {
-            font-size: 2.2rem;
-            color: var(--text-primary);
-            font-weight: 800;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
-            text-shadow: 0 0 20px rgba(0, 180, 216, 0.3);
-        }
-
-        header p {
-            color: var(--accent-teal);
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
+            background: white;
+            border-radius: 16px;
             padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
         }
-
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0, 180, 216, 0.4);
+        h1 {
+            color: #4368E6;
+            text-align: center;
         }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-
-        .card-title {
-            font-size: 1.3rem;
-            color: var(--accent-teal);
-            font-weight: 700;
-        }
-
-        .badge {
-            background: var(--badge-bg);
-            color: #fff;
-            padding: 4px 14px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(0, 180, 216, 0.2);
-        }
-
-        .section-title {
-            font-size: 1.1rem;
-            color: var(--accent-silver);
-            margin: 20px 0 10px 0;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-        }
-
-        .section-title::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 16px;
-            background: var(--accent-teal);
-            margin-left: 10px;
-            border-radius: 2px;
-        }
-
-        p {
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        strong {
-            color: var(--text-primary);
-        }
-
-        ul {
-            list-style: none;
-            margin-bottom: 15px;
-            padding-right: 15px;
-        }
-
-        li {
-            color: var(--text-secondary);
-            position: relative;
-            padding-right: 20px;
-            margin-bottom: 10px;
-        }
-
-        li::before {
-            content: '✦';
-            position: absolute;
-            right: 0;
-            color: var(--accent-teal);
-            font-size: 0.8rem;
-        }
-
-        /* HTML/CSS Math Expressions */
-        .math-container {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
+        .chat-box {
+            height: 400px;
+            border: 1px solid #ddd;
             border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin: 15px 0;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            font-family: 'Times New Roman', serif;
-            direction: ltr;
-        }
-
-        .math-var {
-            font-style: italic;
-            font-weight: bold;
-            color: var(--accent-teal);
-            font-size: 1.2rem;
-            margin-right: 8px;
-        }
-
-        .math-equal {
-            color: var(--text-primary);
-            margin-right: 8px;
-            font-size: 1.1rem;
-        }
-
-        .fraction {
-            display: inline-flex;
-            flex-direction: column;
-            vertical-align: middle;
-            text-align: center;
-            font-family: 'Peyda', 'IRANSans', Tahoma, sans-serif;
-            font-size: 0.95rem;
-        }
-
-        .numerator {
-            border-bottom: 2px solid var(--accent-silver);
-            padding-bottom: 4px;
-            color: var(--text-primary);
-        }
-
-        .denominator {
-            padding-top: 4px;
-            color: var(--text-primary);
-        }
-
-        .highlight-box {
-            background: rgba(0, 180, 216, 0.05);
-            border-right: 4px solid var(--accent-teal);
             padding: 15px;
-            border-radius: 4px 12px 12px 4px;
-            margin-top: 15px;
+            overflow-y: auto;
+            margin: 20px 0;
+            background: #fafafa;
         }
-
-        .highlight-box p {
-            margin-bottom: 0;
-            color: var(--text-primary);
+        .msg {
+            padding: 10px 16px;
+            border-radius: 12px;
+            margin: 8px 0;
+            max-width: 80%;
         }
-
-        footer {
+        .user {
+            background: #4368E6;
+            color: white;
+            margin-right: auto;
+            text-align: right;
+        }
+        .bot {
+            background: #e8edfc;
+            color: #1a1a2e;
+            margin-left: auto;
+            text-align: right;
+        }
+        .input-area {
+            display: flex;
+            gap: 10px;
+        }
+        .input-area input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        .input-area button {
+            padding: 12px 24px;
+            background: #4368E6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .input-area button:hover {
+            background: #2d4ec9;
+        }
+        .status {
             text-align: center;
-            margin-top: 50px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 20px;
+            padding: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        .error {
+            color: #e74c3c;
+            background: #fde8e8;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid #ddd;
+            border-top: 3px solid #4368E6;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .success {
+            color: #27ae60;
+            background: #e8f8ed;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <header>
-        <h1>پاسخ‌نامه جامع آزمایشگاه علوم تجربی</h1>
-        <p>پایه یازدهم دوره دوم متوسطه</p>
-    </header>
-
-    <!-- سوال ۱ -->
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">سوال ۱</div>
-            <div class="badge">۴ نمره</div>
+    <div class="container">
+        <h1>🤖 تست BoxAPI</h1>
+        
+        <div id="status" class="status">🔌 در حال اتصال به BoxAPI...</div>
+        
+        <div class="chat-box" id="chatBox">
+            <div class="msg bot">سلام! 👋 یک سوال بپرسید تا ببینیم API کار می‌کند.</div>
         </div>
         
-        <div class="section-title">الف) امواج لرزه‌ای و تشخیص مرکز زمین‌لرزه</div>
-        <p>وقتی بخشی از سنگ‌کره می‌شکند، انرژی به صورت امواج لرزه‌ای آزاد می‌شود که به دو دستهٔ کلی تقسیم می‌شوند:</p>
-        <ul>
-            <li><strong>امواج درونی:</strong> شامل <strong>موج P</strong> (اولیه، فشاری، سریع‌تر، با قابلیت عبور از محیط‌های جامد، مایع و گاز) و <strong>موج S</strong> (ثانویه، عرضی، کندتر، با قابلیت عبور صرفاً از محیط‌های جامد).</li>
-            <li><strong>امواج سطحی:</strong> سرعت حرکت آن‌ها از هر دو نوع بالا کمتر است، بر روی سطح زمین حرکت می‌کنند و بیشترین خسارت و خرابی را به‌وجود می‌آورند.</li>
-        </ul>
-        <p><strong>مکانیزم تشخیص مرکز زمین‌لرزه:</strong> از آنجا که موج P زودتر از موج S به ایستگاه لرزه‌نگاری می‌رسد، با اندازه‌گیری دقیق اختلاف زمان رسیدن این دو موج، فاصلهٔ دقیق ایستگاه تا کانون زمین‌لرزه محاسبه می‌شود.</p>
-
-        <div class="section-title">ب) ضرورت وجود سه ایستگاه لرزه‌نگاری</div>
-        <p>با داشتن داده‌های <strong>یک ایستگاه</strong>، تنها می‌دانیم کانون روی محیط یک دایره (به شعاع همان فاصلهٔ محاسبه‌شده) قرار دارد که شامل بی‌نهایت نقطهٔ ممکن است. با اضافه شدن <strong>ایستگاه دوم</strong>، دو دایره رسم می‌شود که در دو نقطه با یکدیگر تلاقی دارند و هنوز دو احتمال وجود دارد. در نهایت، تنها با حضور <strong>ایستگاه سوم</strong> و رسم دایرهٔ سوم است که هر سه دایره دقیقاً در یک نقطهٔ مشترک متقاطع می‌شوند؛ این نقطه همان مرکز سطحی زمین‌لرزه است.</p>
-        <p><strong>مبنای رسم دایره‌ها:</strong> فاصلهٔ هر ایستگاه از کانون (که از اختلاف زمان رسیدن امواج P و S به دست آمده) به‌عنوان شعاع دایره با مرکزیت موقعیت جغرافیایی همان ایستگاه در نظر گرفته می‌شود.</p>
-    </div>
-
-    <!-- سوال ۲ -->
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">سوال ۲</div>
-            <div class="badge">۴ نمره</div>
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="سوال خود را بپرسید..." onkeypress="if(event.key==='Enter') sendMessage()">
+            <button onclick="sendMessage()">ارسال</button>
         </div>
-
-        <div class="section-title">الف) پدیده کاهش نقطه انجماد با افزودن نمک</div>
-        <p>نمک به عنوان یک ماده حل‌شدنی، نقطهٔ انجماد آب را پایین می‌آورد (پدیدهٔ کاهش نقطهٔ انجماد). در نتیجه، محلول آب‌نمک در دمایی پایین‌تر از صفر درجهٔ سانتی‌گراد نیز به حالت مایع باقی می‌ماند، پس یخی که قبلاً در دمای صفر درجه جامد بود، در مجاورت نمک ذوب می‌شود.</p>
-
-        <div class="section-title">ب) رفتار شگفت‌انگیز آب در ۴ درجه سانتی‌گراد</div>
-        <p>آب برخلاف اکثر مواد در طبیعت، بیشترین چگالی خود را در دمای ۴ درجهٔ سانتی‌گراد تجربه می‌کند، نه در نقطهٔ انجماد. وقتی هوای محیط سرد می‌شود، آب سطحی دریاچه سرد و سنگین‌تر شده و به کف دریاچه ته‌نشین می‌شود. اما با کاهش دما به زیر ۴ درجه، آب سردتر سبک‌تر شده و در سطح باقی می‌ماند. این پدیده سبب می‌شود که فقط سطح دریاچه یخ ببندد و آب عمق دریاچه در حدود ۴ درجه و به صورت مایع باقی بماند تا بستر مناسبی برای حفظ حیات ماهی‌ها و آبزیان فراهم شود. ضمناً یخ سطحی نیز به عنوان یک عایق حرارتی عمل کرده و مانع هدررفت بیشتر گرمای آب می‌شود.</p>
-
-        <div class="section-title">ج) بیماری رفع فشار در غواصی عمق زیاد</div>
-        <p>در عمق زیاد دریا، فشار بالای محیط باعث می‌شود گازهای تنفسی (به‌ویژه نیتروژن) به میزان بیشتری در خون و بافت‌های بدن غواص حل شوند. اگر غواص با سرعت بالایی به سطح آب بیاید، فشار محیط به ناگهان کاهش یافته و این گازهای محلول، به‌جای خروج تدریجی و منظم از طریق ریه و تنفس، به شکل حباب‌های گاز در خون و بافت‌ها ظاهر می‌شوند. این پدیده عامل بروز <strong>«بیماری رفع فشار» (Decompression Sickness)</strong> است که بسیار خطرناک و گاه مرگبار است.</p>
-        <p><strong>اقدام ایمنی:</strong> فرآیند بالا آمدن غواص باید کاملاً آهسته، تحت کنترل و به صورت مرحله‌به‌مرحله انجام شود تا گازهای درون خون فرصت کافی برای خروج تدریجی و بی‌خطر از طریق شش‌ها را داشته باشند.</p>
-    </div>
-
-    <!-- سوال ۳ -->
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">سوال ۳</div>
-            <div class="badge">۴ نمره</div>
-        </div>
-
-        <div class="section-title">الف) اندازه‌گیری دقیق قطر نخ</div>
-        <p>نخ را به تعداد زیاد و مشخص (مثلاً ۵۰ یا ۱۰۰ دور) به صورت کاملاً فشرده، یکنواخت و بدون ایجاد فاصله در کنار هم، دور یک مداد یا میله می‌پیچیم. سپس طول کل پیچش‌ها را به وسیلهٔ یک خط‌کش دقیق اندازه گرفته و از رابطهٔ زیر استفاده می‌کنیم:</p>
         
-        <div style="text-align: center;">
-            <div class="math-container">
-                <span class="math-var">d</span>
-                <span class="math-equal">=</span>
-                <div class="fraction">
-                    <span class="numerator">طول کل پیچش‌ها</span>
-                    <span class="denominator">تعداد دورهای پیچش</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-title">ب) اندازه‌گیری جرم یک دانه عدس</div>
-        <p>تعداد زیادی دانه عدس هم‌اندازه و یکنواخت (مثلاً ۱۰۰ عدد) را شمرده و جرم کل آن‌ها را با یک ترازوی معمولی (حتی با دقت پایین) وزن می‌کنیم. سپس جرم یک دانه از رابطهٔ زیر به دست می‌آید:</p>
-
-        <div style="text-align: center;">
-            <div class="math-container">
-                <span class="math-var">m</span>
-                <span class="math-equal">=</span>
-                <div class="fraction">
-                    <span class="numerator">جرم کل دانه‌ها</span>
-                    <span class="denominator">تعداد کل دانه‌ها</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="highlight-box">
-            <p><strong>مبنای علمی هر دو روش:</strong> هر دو آزمایش بر پایهٔ <strong>«روش تکثیر در اندازه‌گیری»</strong> طراحی شده‌اند. با جمع کردن مقادیر کوچک و تبدیل آن به یک کمیت بزرگ‌تر قابل سنجش، خطای ابزار و خطای فردی سیستماتیک به شدت کاهش می‌یابد.</p>
+        <div style="margin-top: 10px; font-size: 12px; color: #999; text-align: center;">
+            💡 سوالات نمونه: "قیمت BMW چنده؟" یا "ساعت کاری چیه؟"
         </div>
     </div>
 
-    <!-- سوال ۴ -->
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">سوال ۴</div>
-            <div class="badge">۴ نمره</div>
-        </div>
-        <div class="section-title">آزمایش بررسی نمودار حجم گاز برحسب دما (قانون شارل)</div>
-        <p>مراحل انجام آزمایش به شرح زیر است:</p>
-        <ul>
-            <li>مقداری گاز (هوا) را در یک لولهٔ مویین که یک سر آن بسته است محبوس می‌کنیم. برای مشخص کردن مرز گاز و ایزوله کردن آن، از یک قطرهٔ کوچک جیوه یا اسید سولفوریک به عنوان شاخص متحرک استفاده می‌کنیم.</li>
-            <li>در دمای اتاق، طول اولیهٔ ستون گاز محبوس (که متناسب با حجم آن است) را به کمک یک خط‌کش با دقت ثبت می‌کنیم.</li>
-            <li>لولهٔ مویین را در یک حمام آب (بشر حاوی آب) قرار می‌دهیم که دمای آن به راحتی قابل تنظیم و گرمایش باشد.</li>
-            <li>آب را به‌تدریج و پله‌پله گرم می‌کنیم. در هر مرحله مدتی صبر می‌کنیم تا تعادل دمایی کامل بین آب و گاز درون لوله برقرار شود؛ سپس دما را از روی دماسنج و طول ستون گاز را از روی خط‌کش یادداشت می‌کنیم.</li>
-            <li>این فرآیند را برای چند دمای مختلف تکرار کرده تا جدول داده‌های آزمایش کامل شود.</li>
-            <li>در نهایت، نموداری رسم می‌کنیم که محور افقی آن نشان‌دهندهٔ <strong>دما (T)</strong> و محور عمودی نشان‌دهندهٔ <strong>حجم یا همان طول ستون گاز (V)</strong> باشد. نتیجهٔ این نمودار یک <strong>خط راست</strong> خواهد بود که بیانگر صحت <strong>قانون شارل</strong> است (حجم گاز در فشار ثابت، با دمای مطلق آن نسبت مستقیم دارد).</li>
-        </ul>
-    </div>
+    <script>
+        // ============================================
+        // توکن BoxAPI شما
+        // ============================================
+        const BOXAPI_TOKEN = "MDkxNDA3NTAxMTM6QG1haGFtNDA1";
+        const BOXAPI_URL = "https://ai.boxapi.ir/api/v1";
 
-    <!-- سوال ۵ -->
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">سوال ۵</div>
-            <div class="badge">۴ نمره</div>
-        </div>
-        <div class="section-title">روش آزمایشگاهی تشخیص زعفران اصل از تقلبی</div>
-        <p>مقداری از رشته‌های زعفران مورد نظر را در یک لیوان حاوی آب سرد یا ولرم قرار داده و بدون هم‌زدن، تغییرات آن را برای چند دقیقه زیر نظر می‌گیریم:</p>
-        <ul>
-            <li><strong>زعفران اصل:</strong> رنگ‌دانهٔ طبیعی زعفران (کروسین) به صورت کاملاً آرام، ملایم و تدریجی طی چند دقیقه در آب پخش می‌شود و رنگ آب را به زرد طلایی شفاف تبدیل می‌کند و خود رشته‌های زعفران قرمز باقی می‌مانند.</li>
-            <li><strong>زعفران تقلبی (رنگ‌شده):</strong> در صورتی که از گیاهان مشابه مانند گل‌رنگ یا الیاف مصنوعی رنگ‌شده استفاده شده باشد، رنگ آن به سرعت و فوراً (در عرض چند ثانیه) وارد آب شده و محیط را به رنگ تند، کدر یا قرمز غیرطبیعی متمایل می‌کند.</li>
-        </ul>
-        <div class="highlight-box">
-            <p><strong>معیار اصلی و کلیدی تشخیص:</strong> سرعت و نحوهٔ رنگ‌دهی در آب؛ در نمونهٔ <strong>اصل</strong> فرآیند به صورت <strong>تدریجی</strong> و در نمونهٔ <strong>تقلبی</strong> فرآیند به صورت <strong>آنی و فوری</strong> رخ می‌دهد.</p>
-        </div>
-    </div>
+        // ============================================
+        // تابع اتصال به BoxAPI
+        // ============================================
+        async function getAIResponse(userMessage) {
+            try {
+                console.log("📤 ارسال به BoxAPI:", userMessage);
+                
+                const response = await fetch(`${BOXAPI_URL}/chat/completions`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${BOXAPI_TOKEN}`
+                    },
+                    body: JSON.stringify({
+                        model: "gpt-4o-mini",
+                        messages: [
+                            { 
+                                role: "system", 
+                                content: `شما یک دستیار هوشمند برای سایت مهام خودرو هستید.
+                                درباره خودرو، قیمت‌ها، برندها، اقساط، ضمانت و خدمات پس از فروش اطلاعات دارید.
+                                پاسخ‌ها را به فارسی و با لحن دوستانه و حرفه‌ای بدهید.`
+                            },
+                            { role: "user", content: userMessage }
+                        ],
+                        temperature: 0.7,
+                        max_tokens: 500
+                    })
+                });
 
-    <footer>
-        <p>طراحی شده به صورت وب‌سایت رسمی و ساختاریافته | آزمایشگاه علوم تجربی یازدهم</p>
-    </footer>
-</div>
+                console.log("📥 وضعیت پاسخ:", response.status);
 
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error("❌ خطای سرور:", errorText);
+                    
+                    let errorMessage = `خطای ${response.status}`;
+                    try {
+                        const errorJson = JSON.parse(errorText);
+                        errorMessage = errorJson.error?.message || errorMessage;
+                    } catch(e) {}
+                    
+                    throw new Error(errorMessage);
+                }
+
+                const data = await response.json();
+                console.log("✅ پاسخ دریافت شد:", data);
+                
+                if (data.choices && data.choices[0] && data.choices[0].message) {
+                    return data.choices[0].message.content;
+                } else {
+                    throw new Error("پاسخ نامعتبر از سرور");
+                }
+            } catch (error) {
+                console.error("❌ خطا:", error);
+                return null;
+            }
+        }
+
+        // ============================================
+        // تابع تست اتصال
+        // ============================================
+        async function testConnection() {
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = '⏳ در حال تست اتصال به BoxAPI...';
+            statusDiv.className = 'status';
+            
+            try {
+                const testResponse = await getAIResponse("سلام، یک تست ساده است. فقط بگو 'اتصال برقرار است'");
+                
+                if (testResponse) {
+                    statusDiv.innerHTML = '✅ اتصال به BoxAPI با موفقیت برقرار شد!';
+                    statusDiv.className = 'status success';
+                    
+                    // اضافه کردن پیام تست به چت
+                    const chatBox = document.getElementById('chatBox');
+                    const div = document.createElement('div');
+                    div.className = 'msg bot';
+                    div.innerHTML = `✅ تست موفق! API پاسخ داد:<br><br>"${testResponse}"`;
+                    chatBox.appendChild(div);
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                } else {
+                    statusDiv.innerHTML = '❌ اتصال به BoxAPI ناموفق بود. خطا در دریافت پاسخ.';
+                    statusDiv.className = 'status error';
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `❌ خطا: ${error.message}`;
+                statusDiv.className = 'status error';
+            }
+        }
+
+        // ============================================
+        // ارسال پیام
+        // ============================================
+        let isProcessing = false;
+
+        function addMessage(text, isUser = false) {
+            const chatBox = document.getElementById('chatBox');
+            const div = document.createElement('div');
+            div.className = `msg ${isUser ? 'user' : 'bot'}`;
+            div.textContent = text;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function addLoading() {
+            const chatBox = document.getElementById('chatBox');
+            const div = document.createElement('div');
+            div.className = 'msg bot';
+            div.id = 'loadingMsg';
+            div.innerHTML = '<span class="loading"></span> در حال دریافت پاسخ...';
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function removeLoading() {
+            const loading = document.getElementById('loadingMsg');
+            if (loading) loading.remove();
+        }
+
+        async function sendMessage() {
+            if (isProcessing) return;
+            
+            const input = document.getElementById('userInput');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            isProcessing = true;
+            addMessage(text, true);
+            input.value = '';
+            
+            addLoading();
+            
+            try {
+                const response = await getAIResponse(text);
+                removeLoading();
+                
+                if (response) {
+                    addMessage(response, false);
+                } else {
+                    addMessage("❌ متاسفم، پاسخ دریافت نشد. لطفاً دوباره تلاش کنید.", false);
+                }
+            } catch (error) {
+                removeLoading();
+                addMessage(`❌ خطا: ${error.message}`, false);
+            }
+            
+            isProcessing = false;
+        }
+
+        // ============================================
+        // اجرای تست هنگام بارگذاری صفحه
+        // ============================================
+        window.onload = function() {
+            // ابتدا یک تست ساده بزن
+            setTimeout(testConnection, 1000);
+        };
+    </script>
 </body>
 </html>
