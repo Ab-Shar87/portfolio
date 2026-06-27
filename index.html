@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تست BoxAPI</title>
+    <title>چت‌بات مهام خودرو</title>
     <style>
         body {
             font-family: Tahoma, sans-serif;
@@ -19,10 +19,7 @@
             padding: 30px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.1);
         }
-        h1 {
-            color: #4368E6;
-            text-align: center;
-        }
+        h1 { color: #4368E6; text-align: center; }
         .chat-box {
             height: 400px;
             border: 1px solid #ddd;
@@ -37,6 +34,7 @@
             border-radius: 12px;
             margin: 8px 0;
             max-width: 80%;
+            white-space: pre-wrap;
         }
         .user {
             background: #4368E6;
@@ -86,6 +84,13 @@
             border-radius: 8px;
             text-align: center;
         }
+        .success {
+            color: #27ae60;
+            background: #e8f8ed;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
         .loading {
             display: inline-block;
             width: 16px;
@@ -99,94 +104,68 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .success {
-            color: #27ae60;
-            background: #e8f8ed;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🤖 تست BoxAPI</h1>
+        <h1>🤖 چت‌بات مهام خودرو</h1>
         
-        <div id="status" class="status">🔌 در حال اتصال به BoxAPI...</div>
+        <div id="status" class="status">🔌 در حال اتصال...</div>
         
         <div class="chat-box" id="chatBox">
-            <div class="msg bot">سلام! 👋 یک سوال بپرسید تا ببینیم API کار می‌کند.</div>
+            <div class="msg bot">سلام! 👋 چطور می‌توانم کمک کنم؟</div>
         </div>
         
         <div class="input-area">
             <input type="text" id="userInput" placeholder="سوال خود را بپرسید..." onkeypress="if(event.key==='Enter') sendMessage()">
             <button onclick="sendMessage()">ارسال</button>
         </div>
-        
-        <div style="margin-top: 10px; font-size: 12px; color: #999; text-align: center;">
-            💡 سوالات نمونه: "قیمت BMW چنده؟" یا "ساعت کاری چیه؟"
-        </div>
     </div>
 
     <script>
         // ============================================
-        // توکن BoxAPI شما
+        // تنظیمات - با CORS Proxy
         // ============================================
-        const BOXAPI_TOKEN = "MDkxNDA3NTAxMTM6QG1haGFtNDA1";
-        const BOXAPI_URL = "https://ai.boxapi.ir/api/v1";
+        const TOKEN = "MDkxNDA3NTAxMTM6QG1haGFtNDA1";
+        const PROXY = "https://corsproxy.io/?";
+        const API_URL = "https://ai.boxapi.ir/api/v1";
 
         // ============================================
-        // تابع اتصال به BoxAPI
+        // تابع اصلی
         // ============================================
-        async function getAIResponse(userMessage) {
+        async function getAIResponse(message) {
             try {
-                console.log("📤 ارسال به BoxAPI:", userMessage);
+                console.log("📤 ارسال:", message);
                 
-                const response = await fetch(`${BOXAPI_URL}/chat/completions`, {
+                const response = await fetch(`${PROXY}${encodeURIComponent(API_URL)}/chat/completions`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${BOXAPI_TOKEN}`
+                        'Authorization': `Bearer ${TOKEN}`
                     },
                     body: JSON.stringify({
                         model: "gpt-4o-mini",
                         messages: [
                             { 
                                 role: "system", 
-                                content: `شما یک دستیار هوشمند برای سایت مهام خودرو هستید.
-                                درباره خودرو، قیمت‌ها، برندها، اقساط، ضمانت و خدمات پس از فروش اطلاعات دارید.
-                                پاسخ‌ها را به فارسی و با لحن دوستانه و حرفه‌ای بدهید.`
+                                content: "شما دستیار هوشمند سایت مهام خودرو هستید. درباره خودرو، قیمت، برندها، اقساط، ضمانت و خدمات پس از فروش پاسخ دهید."
                             },
-                            { role: "user", content: userMessage }
+                            { role: "user", content: message }
                         ],
                         temperature: 0.7,
                         max_tokens: 500
                     })
                 });
 
-                console.log("📥 وضعیت پاسخ:", response.status);
+                console.log("📥 وضعیت:", response.status);
 
                 if (!response.ok) {
                     const errorText = await response.text();
-                    console.error("❌ خطای سرور:", errorText);
-                    
-                    let errorMessage = `خطای ${response.status}`;
-                    try {
-                        const errorJson = JSON.parse(errorText);
-                        errorMessage = errorJson.error?.message || errorMessage;
-                    } catch(e) {}
-                    
-                    throw new Error(errorMessage);
+                    throw new Error(`خطا ${response.status}: ${errorText}`);
                 }
 
                 const data = await response.json();
-                console.log("✅ پاسخ دریافت شد:", data);
-                
-                if (data.choices && data.choices[0] && data.choices[0].message) {
-                    return data.choices[0].message.content;
-                } else {
-                    throw new Error("پاسخ نامعتبر از سرور");
-                }
+                return data.choices[0].message.content;
             } catch (error) {
                 console.error("❌ خطا:", error);
                 return null;
@@ -194,39 +173,7 @@
         }
 
         // ============================================
-        // تابع تست اتصال
-        // ============================================
-        async function testConnection() {
-            const statusDiv = document.getElementById('status');
-            statusDiv.innerHTML = '⏳ در حال تست اتصال به BoxAPI...';
-            statusDiv.className = 'status';
-            
-            try {
-                const testResponse = await getAIResponse("سلام، یک تست ساده است. فقط بگو 'اتصال برقرار است'");
-                
-                if (testResponse) {
-                    statusDiv.innerHTML = '✅ اتصال به BoxAPI با موفقیت برقرار شد!';
-                    statusDiv.className = 'status success';
-                    
-                    // اضافه کردن پیام تست به چت
-                    const chatBox = document.getElementById('chatBox');
-                    const div = document.createElement('div');
-                    div.className = 'msg bot';
-                    div.innerHTML = `✅ تست موفق! API پاسخ داد:<br><br>"${testResponse}"`;
-                    chatBox.appendChild(div);
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                } else {
-                    statusDiv.innerHTML = '❌ اتصال به BoxAPI ناموفق بود. خطا در دریافت پاسخ.';
-                    statusDiv.className = 'status error';
-                }
-            } catch (error) {
-                statusDiv.innerHTML = `❌ خطا: ${error.message}`;
-                statusDiv.className = 'status error';
-            }
-        }
-
-        // ============================================
-        // ارسال پیام
+        // مدیریت چت
         // ============================================
         let isProcessing = false;
 
@@ -267,28 +214,52 @@
             
             addLoading();
             
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = '⏳ در حال دریافت پاسخ از AI...';
+            statusDiv.className = 'status';
+            
             try {
                 const response = await getAIResponse(text);
                 removeLoading();
                 
                 if (response) {
                     addMessage(response, false);
+                    statusDiv.innerHTML = '✅ پاسخ دریافت شد';
+                    statusDiv.className = 'status success';
                 } else {
                     addMessage("❌ متاسفم، پاسخ دریافت نشد. لطفاً دوباره تلاش کنید.", false);
+                    statusDiv.innerHTML = '❌ خطا در دریافت پاسخ';
+                    statusDiv.className = 'status error';
                 }
             } catch (error) {
                 removeLoading();
                 addMessage(`❌ خطا: ${error.message}`, false);
+                statusDiv.innerHTML = `❌ خطا: ${error.message}`;
+                statusDiv.className = 'status error';
             }
             
             isProcessing = false;
         }
 
-        // ============================================
-        // اجرای تست هنگام بارگذاری صفحه
-        // ============================================
+        // تست اتصال
+        async function testConnection() {
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = '⏳ تست اتصال...';
+            
+            const testResponse = await getAIResponse("سلام، فقط بگو 'اتصال برقرار است'");
+            
+            if (testResponse) {
+                statusDiv.innerHTML = '✅ اتصال برقرار است!';
+                statusDiv.className = 'status success';
+                addMessage(`✅ تست موفق: ${testResponse}`, false);
+            } else {
+                statusDiv.innerHTML = '❌ اتصال ناموفق. لطفاً دوباره تلاش کنید.';
+                statusDiv.className = 'status error';
+            }
+        }
+
+        // اجرا در شروع
         window.onload = function() {
-            // ابتدا یک تست ساده بزن
             setTimeout(testConnection, 1000);
         };
     </script>
